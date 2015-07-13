@@ -21,6 +21,10 @@ public class LoginActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 
+	public void onSignIn(View v){
+		Intent intent = new Intent(this, SignInActivity.class);
+		startActivity(intent);
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
