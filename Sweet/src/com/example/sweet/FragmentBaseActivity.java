@@ -1,54 +1,92 @@
 package com.example.sweet;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.example.fragment.FragmentHome;
-import com.example.fragment.FragmentProfile;
-import com.example.fragment.FragmentSearch;
-import com.example.fragment.FragmentSetting;
+import com.example.fragment.TabsPagerAdapter;
 
-public class FragmentBaseActivity extends ActionBarActivity {
+public class FragmentBaseActivity extends ActionBarActivity implements android.support.v7.app.ActionBar.TabListener{
+
+
+    private ViewPager tabsviewPager;
+     private ActionBar mActionBar;
+     private TabsPagerAdapter mTabsAdapter;
+
 	
-	FragmentTabHost tabHost;
-    private static final String TAB1 = "Home";
-    private static final String TAB2 = "Search";
-    private static final String TAB3 = "Profile";
-    private static final String TAB4 = "Setting";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_fragment_base);
+            
+            tabsviewPager = (ViewPager) findViewById(R.id.viewpager);
+            mTabsAdapter = new TabsPagerAdapter(this, getSupportFragmentManager());
+            tabsviewPager.setAdapter(mTabsAdapter);
+            
+            mActionBar = getSupportActionBar();
+            mActionBar.setHomeButtonEnabled(false);
+            mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+            mActionBar.setDisplayShowTitleEnabled(false);
+            mActionBar.setDisplayShowHomeEnabled(false);
+            
+            
+            Tab HomeTab = getSupportActionBar().newTab().setTabListener(this);
+            Tab SearchTab = getSupportActionBar().newTab().setTabListener(this);
+            Tab ProfileTab = getSupportActionBar().newTab().setTabListener(this);
+            Tab SettingTab = getSupportActionBar().newTab().setTabListener(this);
+            HomeTab.setIcon(R.drawable.home);
+            
+            getSupportActionBar().addTab(HomeTab);
+            getSupportActionBar().addTab(SearchTab);
+            getSupportActionBar().addTab(ProfileTab);
+            getSupportActionBar().addTab(SettingTab);
+            
+            tabsviewPager.setOnPageChangeListener(new OnPageChangeListener() {
+				
+				@Override
+				public void onPageSelected(int position) {
+					// TODO Auto-generated method stub
+					getSupportActionBar().setSelectedNavigationItem(position);
+					
+				}
+				
+				@Override
+				public void onPageScrolled(int arg0, float arg1, int arg2) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void onPageScrollStateChanged(int arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+    }
+
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_fragment_base);
+	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
 		
-		tabHost = (FragmentTabHost)findViewById(R.id.tabhost);
-        tabHost.setup(this, getSupportFragmentManager(),R.id.realtabcontent);
-        tabHost.addTab(tabHost.newTabSpec(TAB1).setIndicator("홈"), FragmentHome.class ,null);
-        tabHost.addTab(tabHost.newTabSpec(TAB2).setIndicator("검색"), FragmentSearch.class ,null);
-        tabHost.addTab(tabHost.newTabSpec(TAB3).setIndicator("프로필"), FragmentProfile.class ,null);
-        tabHost.addTab(tabHost.newTabSpec(TAB4).setIndicator("설정"), FragmentSetting.class ,null);
 	}
+
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.fragment_base, menu);
-		return true;
+	public void onTabSelected(Tab selectedtab, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		tabsviewPager.setCurrentItem(selectedtab.getPosition());
+		
 	}
+
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
 	}
-
 }

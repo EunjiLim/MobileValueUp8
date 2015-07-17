@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
     <application
@@ -29,11 +29,19 @@
         </activity>
         <activity
             android:name=".FragmentBaseActivity"
-            android:label="@string/title_activity_fragment_base" >
+            android:label="@style/CustomActionBarTheme" >
         </activity>
         <activity
-            android:name=".SignInActivity"
-            android:label="@string/title_activity_signin" >
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test" >
+        </activity>
+        <activity
+            android:name=".SetGroupActivity"
+            android:label="@string/title_activity_set_group" >
+        </activity>
+        <activity
+            android:name=".SinginActivity"
+            android:label="@string/title_activity_singin" >
         </activity>
     </application>
 

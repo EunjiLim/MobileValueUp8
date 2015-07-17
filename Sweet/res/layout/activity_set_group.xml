@@ -1,0 +1,137 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.sweet.SetGroupActivity"
+    android:orientation="vertical"
+    android:background="@color/material_blue_grey_800"
+    >
+
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:background="@color/background_material_light"
+	    >
+	    
+    	<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="카테고리"
+	        android:textSize="10dp" />
+	    
+	</LinearLayout>
+	
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@color/background_material_light"
+	    >
+	    
+	    <Button
+		    android:layout_width="60dp"
+		    android:layout_height="wrap_content"
+		    android:text="숙박"
+		    android:textSize="15dp"
+		    android:layout_marginLeft="10dp"
+	        />
+	    
+	    <Button
+		    android:layout_width="60dp"
+		    android:layout_height="wrap_content"
+		    android:text="레저"
+		    android:textSize="15dp"
+		    android:layout_marginLeft="10dp"
+	        />
+	    
+	    <Button
+		    android:layout_width="60dp"
+		    android:layout_height="wrap_content"
+		    android:text="식사"
+		    android:textSize="15dp"
+		    android:layout_marginLeft="10dp"
+	        />
+	    
+	    <Button
+		    android:layout_width="60dp"
+		    android:layout_height="wrap_content"
+		    android:text="동행"
+		    android:textSize="15dp"
+		    android:layout_marginLeft="10dp"
+		    android:layout_marginRight="20dp"
+	        />
+	    
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    >
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:background="@color/background_material_light"
+	    android:paddingTop="20dp"
+	    >
+	    
+	    <EditText
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:hint="모임 이름을 적어주세요"
+	        android:textSize="10dp"
+	        />
+	    
+	</LinearLayout>
+	
+		<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="100dp"
+	    android:background="@color/background_material_light"
+	    >
+	    
+	    <EditText
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:hint="상세설명"
+	        android:textSize="10dp"
+	        android:layout_centerInParent="true"
+	        />
+	    
+	    </RelativeLayout>
+	    
+	</LinearLayout>
+	
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    >
+		
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:background="@color/background_material_light"
+	    	android:orientation="horizontal"
+	        >
+	        
+	        <Spinner 
+	        	android:layout_width="match_parent"
+	        	android:layout_height="wrap_content"
+	        	android:drawSelectorOnTop="true"
+	        	android:prompt="@string/location_prompt"
+	        	android:id="@+id/locationSpinner"
+	            />
+	        
+	    </LinearLayout>
+	    
+	    
+	</RelativeLayout>
+
+</LinearLayout>
