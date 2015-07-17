@@ -31,6 +31,10 @@
             android:name=".FragmentBaseActivity"
             android:label="@string/title_activity_fragment_base" >
         </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/title_activity_signin" >
+        </activity>
     </application>
 
 </manifest>
