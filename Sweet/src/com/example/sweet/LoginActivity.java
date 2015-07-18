@@ -145,7 +145,7 @@ public class logIn extends AsyncTask<String, Void, String> {
 	}
 
 	public void onClickSignIn(View v){
-		Intent intent = new Intent(this, SignInActivity.class);
+		Intent intent = new Intent(this, SignUpActivity.class);
 		startActivity(intent);
 	}
 	@Override

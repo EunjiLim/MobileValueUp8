@@ -418,6 +418,7 @@ int drawable cat01 0x7f02003b
 int drawable home 0x7f02003c
 int drawable ic_launcher 0x7f02003d
 int drawable notification_template_icon_bg 0x7f02003e
+<<<<<<< HEAD
 int id Button_duplicationCheck 0x7f090065
 int id Button_finishSignIn 0x7f090064
 int id EditText_cellNumber 0x7f090062
@@ -431,6 +432,19 @@ int id EditText_password 0x7f09005e
 int id EditText_sex 0x7f090061
 int id TextView_signInByEmail 0x7f09005c
 int id action0 0x7f09006d
+=======
+int id Button_duplicationCheck 0x7f090062
+int id Button_finishSignUp 0x7f090061
+int id EditText_cellNumber 0x7f09005f
+int id EditText_dateOfBirth 0x7f09005d
+int id EditText_facebookId 0x7f090060
+int id EditText_id 0x7f09005a
+int id EditText_name 0x7f09005c
+int id EditText_password 0x7f09005b
+int id EditText_sex 0x7f09005e
+int id TextView_signInByEmail 0x7f090059
+int id action0 0x7f09006a
+>>>>>>> 1df6466da44b7898856cba352950dac4048f5786
 int id action_bar 0x7f090040
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f09003f
@@ -574,7 +588,7 @@ int layout abc_simple_dropdown_hint 0x7f030018
 int layout activity_fragment_base 0x7f030019
 int layout activity_login 0x7f03001a
 int layout activity_set_group 0x7f03001b
-int layout activity_signin 0x7f03001c
+int layout activity_signup 0x7f03001c
 int layout activity_splash 0x7f03001d
 int layout fragment_home 0x7f03001e
 int layout fragment_profile 0x7f03001f
@@ -624,7 +638,7 @@ int string status_bar_notification_info_overflow 0x7f0a0011
 int string title_activity_fragment_base 0x7f0a0016
 int string title_activity_main 0x7f0a001c
 int string title_activity_set_group 0x7f0a001b
-int string title_activity_signin 0x7f0a001e
+int string title_activity_signup 0x7f0a001e
 int string title_activity_splash 0x7f0a0015
 int string title_activity_test 0x7f0a0017
 int string title_section1 0x7f0a0018

@@ -40,9 +40,10 @@
             android:label="@string/title_activity_set_group" >
         </activity>
         <activity
-            android:name=".SignInActivity"
-            android:label="@string/title_activity_signin" >
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_signup" >
         </activity>
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

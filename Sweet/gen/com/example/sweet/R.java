@@ -1940,6 +1940,7 @@ containing a value of this type.
         public static final int notification_template_icon_bg=0x7f02003e;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int Button_duplicationCheck=0x7f090065;
         public static final int Button_finishSignIn=0x7f090064;
         public static final int EditText_cellNumber=0x7f090062;
@@ -1953,6 +1954,19 @@ containing a value of this type.
         public static final int EditText_sex=0x7f090061;
         public static final int TextView_signInByEmail=0x7f09005c;
         public static final int action0=0x7f09006d;
+=======
+        public static final int Button_duplicationCheck=0x7f090062;
+        public static final int Button_finishSignUp=0x7f090061;
+        public static final int EditText_cellNumber=0x7f09005f;
+        public static final int EditText_dateOfBirth=0x7f09005d;
+        public static final int EditText_facebookId=0x7f090060;
+        public static final int EditText_id=0x7f09005a;
+        public static final int EditText_name=0x7f09005c;
+        public static final int EditText_password=0x7f09005b;
+        public static final int EditText_sex=0x7f09005e;
+        public static final int TextView_signInByEmail=0x7f090059;
+        public static final int action0=0x7f09006a;
+>>>>>>> 1df6466da44b7898856cba352950dac4048f5786
         public static final int action_bar=0x7f090040;
         public static final int action_bar_activity_content=0x7f090003;
         public static final int action_bar_container=0x7f09003f;
@@ -2129,7 +2143,7 @@ containing a value of this type.
         public static final int activity_fragment_base=0x7f030019;
         public static final int activity_login=0x7f03001a;
         public static final int activity_set_group=0x7f03001b;
-        public static final int activity_signin=0x7f03001c;
+        public static final int activity_signup=0x7f03001c;
         public static final int activity_splash=0x7f03001d;
         public static final int fragment_home=0x7f03001e;
         public static final int fragment_profile=0x7f03001f;
@@ -2231,7 +2245,7 @@ containing a value of this type.
         public static final int title_activity_fragment_base=0x7f0a0016;
         public static final int title_activity_main=0x7f0a001c;
         public static final int title_activity_set_group=0x7f0a001b;
-        public static final int title_activity_signin=0x7f0a001e;
+        public static final int title_activity_signup=0x7f0a001e;
         public static final int title_activity_splash=0x7f0a0015;
         public static final int title_activity_test=0x7f0a0017;
         public static final int title_section1=0x7f0a0018;

@@ -13,7 +13,11 @@
     <string name="title_activity_set_group">SetGroupActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="location_prompt">지역</string>
+<<<<<<< HEAD
     <string name="title_activity_signin">SigninActivity</string>
     <string name="number_prompt">정원</string>
+=======
+    <string name="title_activity_signup">SignupActivity</string>
+>>>>>>> 1df6466da44b7898856cba352950dac4048f5786
 
 </resources>
