@@ -62,7 +62,7 @@
         android:layout_weight="0.24" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/button_login"
             style="@style/AppBaseTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,6 +78,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="30dp"
+            android:onClick="onClickSignIn"
             android:text="회원가입" />
 
         <Button
@@ -86,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/button1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="60dp"
             android:text="로그인 없이 둘러보기" 
             android:onClick="onLoginWithoutId"/>
 

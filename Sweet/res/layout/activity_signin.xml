@@ -64,17 +64,25 @@
         android:hint="휴대폰 번호"/>
     
     <EditText
-        android:id="@+id/EditText_kakaoTalkId"
+        android:id="@+id/EditText_facebookId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:layout_below="@id/EditText_cellNumber"
-        android:hint="카카오톡 아이디"/>
+        android:hint="페이스북 아이디"/>
 
     <Button
         android:id="@+id/Button_finishSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_kakaoTalkId"
+        android:layout_below="@id/EditText_facebookId"
         android:text="회원 가입" />
+
+    <Button
+        android:id="@+id/Button_duplicationCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/EditText_id"
+        android:layout_alignRight="@+id/EditText_id"
+        android:text="중복확인" />
 
 </RelativeLayout>

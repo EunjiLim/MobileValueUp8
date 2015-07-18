@@ -13,6 +13,6 @@
     <string name="title_activity_set_group">SetGroupActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="location_prompt">지역</string>
-    <string name="title_activity_singin">SinginActivity</string>
+    <string name="title_activity_signin">SigninActivity</string>
 
 </resources>
