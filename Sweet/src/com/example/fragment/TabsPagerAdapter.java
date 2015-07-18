@@ -55,29 +55,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
  
     }
     
-    
- 
- 
-//    @Override
-//	public CharSequence getPageTitle(int position) {
-//		// TODO Auto-generated method stub
-//    	switch(position){
-//    	case 0:
-//    		return mContext.getString(R.string.fragment1).toUpperCase();
-//    		
-//    	case 1:
-//    		return mContext.getString(R.string.fragment1).toUpperCase();
-//    	
-//    	case 2:
-//    		return mContext.getString(R.string.fragment1).toUpperCase();
-//    		
-//    	case 3:
-//    		return mContext.getString(R.string.fragment1).toUpperCase();
-//    	}
-//		return null;
-//	}
-
-
 
 	@Override
  

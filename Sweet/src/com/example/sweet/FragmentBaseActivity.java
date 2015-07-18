@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
 
+import com.example.fragment.FragmentSearch;
 import com.example.fragment.TabsPagerAdapter;
 
 public class FragmentBaseActivity extends ActionBarActivity implements android.support.v7.app.ActionBar.TabListener{
@@ -22,6 +23,8 @@ public class FragmentBaseActivity extends ActionBarActivity implements android.s
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fragment_base);
+            
+            processIntent();
             
             tabsviewPager = (ViewPager) findViewById(R.id.viewpager);
             mTabsAdapter = new TabsPagerAdapter(this, getSupportFragmentManager());
@@ -67,7 +70,9 @@ public class FragmentBaseActivity extends ActionBarActivity implements android.s
 				}
 			});
     }
-
+    
+    
+    
 
 	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
@@ -88,5 +93,13 @@ public class FragmentBaseActivity extends ActionBarActivity implements android.s
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private void processIntent(){
+		if(getIntent().getExtras()!=null){
+			Bundle bundle = getIntent().getExtras();
+			FragmentSearch fragmentSearch = new FragmentSearch();
+			fragmentSearch.SetGroupInfo(bundle);
+		}
 	}
 }

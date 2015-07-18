@@ -4,4 +4,10 @@
         <item >서울</item>
         <item >경기도</item>
     </string-array>
+        <string-array name="group_number">
+            <item >1~5인</item>
+            <item >6~10인</item>
+            <item >11~30인</item>
+            <item >30인이상</item>
+        </string-array>
 </resources>
