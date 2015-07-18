@@ -1940,7 +1940,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int Button_duplicationCheck=0x7f090062;
-        public static final int Button_finishSignIn=0x7f090061;
+        public static final int Button_finishSignUp=0x7f090061;
         public static final int EditText_cellNumber=0x7f09005f;
         public static final int EditText_dateOfBirth=0x7f09005d;
         public static final int EditText_facebookId=0x7f090060;
@@ -2125,7 +2125,7 @@ containing a value of this type.
         public static final int activity_fragment_base=0x7f030019;
         public static final int activity_login=0x7f03001a;
         public static final int activity_set_group=0x7f03001b;
-        public static final int activity_signin=0x7f03001c;
+        public static final int activity_signup=0x7f03001c;
         public static final int activity_splash=0x7f03001d;
         public static final int fragment_home=0x7f03001e;
         public static final int fragment_profile=0x7f03001f;
@@ -2226,7 +2226,7 @@ containing a value of this type.
         public static final int title_activity_fragment_base=0x7f0a0016;
         public static final int title_activity_main=0x7f0a001c;
         public static final int title_activity_set_group=0x7f0a001b;
-        public static final int title_activity_signin=0x7f0a001e;
+        public static final int title_activity_signup=0x7f0a001e;
         public static final int title_activity_splash=0x7f0a0015;
         public static final int title_activity_test=0x7f0a0017;
         public static final int title_section1=0x7f0a0018;

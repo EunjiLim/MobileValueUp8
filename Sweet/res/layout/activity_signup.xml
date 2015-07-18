@@ -71,7 +71,7 @@
         android:hint="페이스북 아이디"/>
 
     <Button
-        android:id="@+id/Button_finishSignIn"
+        android:id="@+id/Button_finishSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/EditText_facebookId"
