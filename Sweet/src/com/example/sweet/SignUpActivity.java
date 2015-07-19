@@ -34,6 +34,9 @@ public class SignUpActivity extends Activity {
 
 	// context for toast.maketext
 	private Context context;
+	
+	//ID Duplication check을 위한 변수
+	boolean checkPoint=false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +147,7 @@ public class SignUpActivity extends Activity {
 
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-            //회원가입 완료 되면 LoginActivity로 화면 전환
+			// 회원가입 완료 되면 LoginActivity로 화면 전환
 			Toast.makeText(context, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT);
 			Intent intent = new Intent(context, LoginActivity.class);
 			startActivity(intent);
@@ -152,7 +155,7 @@ public class SignUpActivity extends Activity {
 		}
 	}
 
-	//아이디 중복 확인 
+	// 아이디 중복 확인
 	public class checkup extends AsyncTask<String, Void, String> {
 
 		protected void onPreExecute() {
@@ -177,7 +180,7 @@ public class SignUpActivity extends Activity {
 					id = ID.getText().toString();
 
 					StringBuffer buffer = new StringBuffer();
-					buffer.append("id").append("=").append(id).append(""); 
+					buffer.append("id").append("=").append(id).append("");
 
 					OutputStreamWriter outStream = new OutputStreamWriter(
 							http.getOutputStream());
@@ -191,7 +194,7 @@ public class SignUpActivity extends Activity {
 							new InputStreamReader(http.getInputStream(),
 									"UTF-8"));
 
-					//서버로부터 중복 확인 결과 값 받기
+					// 서버로부터 중복 확인 결과 값 받기
 					for (;;) {
 						line = br.readLine();
 
@@ -204,14 +207,11 @@ public class SignUpActivity extends Activity {
 					}
 
 					if (temp2.equals("1")) {
-						Toast toast = Toast.makeText(context, "이미 ID가 존재합니다.",
-								Toast.LENGTH_SHORT);
-						toast.show();
-						Log.e("tag", "이미 ID가 존재합니다."); // toast 이미 ID가 존재합니다.
+						checkPoint = false;
+						Log.e("tag", "이미 ID가 존재합니다."); 
 					} else {
-						Toast toast = Toast.makeText(context,
-								"사용 할 수 있는 ID입니다.", Toast.LENGTH_SHORT);
-						Log.e("tag", "you can use the ID"); // toast 사용해도 좋다.
+						checkPoint = true;
+						Log.e("tag", "you can use the ID"); 
 					}
 					temp2 = "";
 					br.close();
@@ -229,7 +229,13 @@ public class SignUpActivity extends Activity {
 
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
+			if (checkPoint == true) {
+				Log.e("tag", "onPostExecute1");
+				Toast.makeText(context, "사용할 수 있는 ID입니다.", 0).show();
+			} else {
+				Log.e("tag", "onPostExecute2");
+				Toast.makeText(SignUpActivity.this, "이미 존재하는 ID입니다.", 0).show();
+			}
 		}
 	}
-
 }
