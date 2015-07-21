@@ -148,10 +148,9 @@ public class SignUpActivity extends Activity {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			// 회원가입 완료 되면 LoginActivity로 화면 전환
-			Toast.makeText(context, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT);
+			Toast.makeText(context, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(context, LoginActivity.class);
 			startActivity(intent);
-
 		}
 	}
 

@@ -12,7 +12,8 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_set_group">SetGroupActivity</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="location_prompt">지역</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="region_prompt">지역 목록</string>
+
 
 </resources>
