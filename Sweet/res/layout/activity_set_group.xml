@@ -190,6 +190,7 @@
             android:layout_below="@+id/secondRelativeLayout"
             android:background="#0B6F9B"
             android:gravity="center"
+            android:onClick="onClickedSetGroup"
             android:text="모임 만들기"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />

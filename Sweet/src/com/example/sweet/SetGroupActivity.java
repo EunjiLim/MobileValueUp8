@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
@@ -16,9 +17,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SetGroupActivity extends ActionBarActivity {
 
+	private Context context;
+	
 	// 날짜 선택을 위한 변수들
 	private EditText dateEditText;
 	private DatePickerDialog datePickerDialog;
@@ -29,6 +33,8 @@ public class SetGroupActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_group);
 
+		context = this;
+		
 		getSupportActionBar().setTitle("모임 만들기");
 
 		// 지역 선택을 위한 spinner 만들기
@@ -70,5 +76,10 @@ public class SetGroupActivity extends ActionBarActivity {
 		}, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
 				newCalendar.get(Calendar.DAY_OF_MONTH));
 
+	}
+	
+	public void onClickedSetGroup(View v) {
+		Toast.makeText(context, "모임 만들기가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+		finish();
 	}
 }
