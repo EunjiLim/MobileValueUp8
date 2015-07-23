@@ -54,4 +54,8 @@ public class FragmentSearch extends Fragment{
         // TODO Auto-generated method stub
         super.onViewCreated(view, savedInstanceState);
     }
+    
+    public void setData(String title, String description, String location, String date, int people){
+    	Toast.makeText(getActivity().getApplicationContext(), ""+title+people, Toast.LENGTH_SHORT).show();
+    }
 }
