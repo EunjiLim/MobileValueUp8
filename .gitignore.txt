@@ -1,0 +1,9 @@
+*.class
+*.dex
+*.apk
+*.properties
+R.txt
+resources.ap_
+*.cache
+*.jar
+R.txt
