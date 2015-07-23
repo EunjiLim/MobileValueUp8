@@ -16,8 +16,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,20 +27,29 @@ import android.widget.Toast;
 public class SetGroupActivity extends ActionBarActivity {
 
 	private Context context;
-	
+
+	// 데이터베이스에 보낼 String
+	String resultText = "";
+
 	// 날짜 선택을 위한 변수들
 	private EditText dateEditText;
 	private DatePickerDialog datePickerDialog;
 	private SimpleDateFormat dateFormatter;
-	
-	//제목, 내용, 정원
+
+	// 제목, 내용, 정원
 	private EditText title;
 	private EditText description;
 	private EditText number;
+
+	// 입력할 수 있는 최대 글자 수
 	private TextView letterNumber;
-	
-	//지역선택 스피너
+
+	// 지역선택 스피너
 	Spinner regionSpinner;
+
+	// 카테고리의 라디오버튼들
+	RadioButton radio_accommodation, radio_meal, radio_leisure,
+			radio_accompany;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,38 +57,39 @@ public class SetGroupActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_set_group);
 
 		context = this;
-		
+
 		getSupportActionBar().setTitle("모임 만들기");
-		
-		//제목, 내용, 정원
+
+		// 제목, 내용, 정원
 		title = (EditText) findViewById(R.id.EditText_title);
 		description = (EditText) findViewById(R.id.EditText_description);
 		number = (EditText) findViewById(R.id.EditText_fixedNumber);
 		letterNumber = (TextView) findViewById(R.id.TextView_letterNumber);
 		letterNumber.setText("0/300");
-		
+
 		description.addTextChangedListener(new TextWatcher() {
-			
+
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
 				// TODO Auto-generated method stub
 				int len = description.length();
-				letterNumber.setText(len+"/300");
+				letterNumber.setText(len + "/300");
 			}
-			
+
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
 				// TODO Auto-generated method stub
-				description.setFilters(new InputFilter[]{
-					new InputFilter.LengthFilter(300)
-				});
+				description
+						.setFilters(new InputFilter[] { new InputFilter.LengthFilter(
+								300) });
 			}
-			
+
 			@Override
 			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 
@@ -96,10 +108,36 @@ public class SetGroupActivity extends ActionBarActivity {
 		dateEditText.requestFocus();
 
 		setDateTimeField();
+
+		// 라디오 버튼들에 클릭 리스너 등록
+		radio_accommodation = (RadioButton) findViewById(R.id.RadioButton_accommodation);
+		radio_meal = (RadioButton) findViewById(R.id.RadioButton_meal);
+		radio_leisure = (RadioButton) findViewById(R.id.RadioButton_leisure);
+		radio_accompany = (RadioButton) findViewById(R.id.RadioButton_accompany);
+		radio_accommodation.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				checkChecked(v);
+			}
+		});
+		radio_meal.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				checkChecked(v);
+			}
+		});
+		radio_leisure.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				checkChecked(v);
+			}
+		});
+		radio_accompany.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				checkChecked(v);
+			}
+		});
 	}
 
 	private void setDateTimeField() {
-		dateEditText.setOnClickListener(new OnClickListener(){
+		dateEditText.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				if (view == dateEditText) {
@@ -122,18 +160,24 @@ public class SetGroupActivity extends ActionBarActivity {
 
 	}
 	
+	public void checkChecked(View v){
+		RadioButton rb = (RadioButton) v;
+		if(rb.isChecked()) {
+			resultText = "category=" + rb.getText().toString() + "&";
+
+		}
+	}
+
 	public void onClickedSetGroup(View v) {
-		Toast.makeText(context, "모임 만들기가 완료되었습니다.", Toast.LENGTH_SHORT).show();
-		
-		//값 받아오기
-		String titleInfo = title.getText().toString();
-		String descriptionInfo = description.getText().toString();
-		String region = regionSpinner.getSelectedItem().toString();
-		String date = dateEditText.getText().toString();
-		int people = Integer.parseInt(number.getText().toString());
-		
-		
-		
+
+		// 값 받아오기
+		resultText = "title=" + title.getText().toString() + "&"
+				+ "contents=" + description.getText().toString() + "&"
+				+ "location=" + regionSpinner.getSelectedItem().toString() + "&"
+				+ "date=" + dateEditText.getText().toString() + "&"
+				+ "people=" + Integer.parseInt(number.getText().toString());
+
+		Toast.makeText(context, "모임 만들기가 완료되었습니다. " + resultText, Toast.LENGTH_SHORT).show();
 		finish();
 	}
 }

@@ -16,64 +16,47 @@
         android:text="카테고리"
         android:textColor="#FFFFFF" />
 
-    <CheckBox
-        android:id="@+id/CheckedTextView_accommodation"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/RadioGroup_category"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/category"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="false"
-        android:clickable="true"
-        android:gravity="center"
-        android:hint="숙박"
-        android:textColor="#FFFFFF" />
+        android:orientation="horizontal" >
 
-    <CheckBox
-        android:id="@+id/CheckedTextView_meal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/category"
-        android:layout_toEndOf="@id/CheckedTextView_accommodation"
-        android:layout_toRightOf="@id/CheckedTextView_accommodation"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="false"
-        android:clickable="true"
-        android:gravity="center"
-        android:hint="식사"
-        android:textColor="#FFFFFF" />
+        <RadioButton
+            android:id="@+id/RadioButton_accommodation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="숙박" />
 
-    <CheckBox
-        android:id="@+id/CheckedTextView_leisure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/category"
-        android:layout_toEndOf="@id/CheckedTextView_meal"
-        android:layout_toRightOf="@id/CheckedTextView_meal"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="false"
-        android:clickable="true"
-        android:gravity="center"
-        android:hint="레저"
-        android:textColor="#FFFFFF" />
+        <RadioButton
+            android:id="@+id/RadioButton_meal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="식사" />
 
-    <CheckBox
-        android:id="@+id/CheckedTextView_accompany"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/category"
-        android:layout_toRightOf="@id/CheckedTextView_leisure"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="false"
-        android:clickable="true"
-        android:gravity="center"
-        android:hint="동행"
-        android:textColor="#FFFFFF" />
+        <RadioButton
+            android:id="@+id/RadioButton_leisure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="레저" />
+
+        <RadioButton
+            android:id="@+id/RadioButton_accompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="동행" />
+    </RadioGroup>
 
     <View
         android:id="@+id/View_forLine1"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_below="@id/CheckedTextView_leisure"
+        android:layout_below="@id/RadioGroup_category"
         android:background="#5CCCC6" />
 
     <EditText
@@ -149,12 +132,11 @@
 
     <EditText
         android:id="@+id/EditText_selectedDate"
-        android:layout_width="30dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/CheckedTextView_accompany"
         android:layout_alignTop="@id/TextView_date"
         android:layout_below="@id/View_forLine4"
-        android:layout_toRightOf="@+id/CheckedTextView_accommodation"
+        android:layout_toRightOf="@+id/TextView_date"
         android:background="#FFFFFF"
         android:hint="날짜를 고르세요."
         android:textColor="#5CCCC6" />
@@ -181,19 +163,18 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/TextView_fixedNumber"
             android:hint="숫자로 입력하세요." />
-
     </RelativeLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/secondRelativeLayout"
-            android:background="#0B6F9B"
-            android:gravity="center"
-            android:onClick="onClickedSetGroup"
-            android:text="모임 만들기"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/secondRelativeLayout"
+        android:background="#0B6F9B"
+        android:gravity="center"
+        android:onClick="onClickedSetGroup"
+        android:text="모임 만들기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
         <TextView
             android:id="@+id/TextView_letterNumber"
