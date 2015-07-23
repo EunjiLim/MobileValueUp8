@@ -71,8 +71,6 @@ public class FragmentBaseActivity extends ActionBarActivity implements android.s
 				}
 			});
             
-            
-            //newGroupInfo();
     }
 
 
@@ -97,20 +95,4 @@ public class FragmentBaseActivity extends ActionBarActivity implements android.s
 		
 	}
 	
-	public void newGroupInfo(){
-		if(getIntent()!=null){
-			Intent intent = getIntent();
-			String title = intent.getStringExtra("title");
-			String description = intent.getStringExtra("description");
-			String location =  intent.getStringExtra("region");
-			String date = intent.getStringExtra("date");
-			int number = intent.getIntExtra("number", 0);
-			
-			FragmentSearch frag = new FragmentSearch();
-			frag.setData(title, description, location, date, number);
-			tabsviewPager.setCurrentItem(SearchTab.getPosition());
-		} else{
-			
-		}
-	}
 }

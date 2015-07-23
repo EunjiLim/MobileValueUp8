@@ -195,4 +195,12 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/TextView_letterNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/EditText_description"
+            android:layout_alignRight="@+id/EditText_description"
+            android:text="TextView" />
+
 </RelativeLayout>

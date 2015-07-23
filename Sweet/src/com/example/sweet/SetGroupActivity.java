@@ -7,17 +7,19 @@ import java.util.Locale;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
-import android.util.Log;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SetGroupActivity extends ActionBarActivity {
@@ -33,6 +35,7 @@ public class SetGroupActivity extends ActionBarActivity {
 	private EditText title;
 	private EditText description;
 	private EditText number;
+	private TextView letterNumber;
 	
 	//지역선택 스피너
 	Spinner regionSpinner;
@@ -50,6 +53,33 @@ public class SetGroupActivity extends ActionBarActivity {
 		title = (EditText) findViewById(R.id.EditText_title);
 		description = (EditText) findViewById(R.id.EditText_description);
 		number = (EditText) findViewById(R.id.EditText_fixedNumber);
+		letterNumber = (TextView) findViewById(R.id.TextView_letterNumber);
+		letterNumber.setText("0/300");
+		
+		description.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				int len = description.length();
+				letterNumber.setText(len+"/300");
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				description.setFilters(new InputFilter[]{
+					new InputFilter.LengthFilter(300)
+				});
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		// 지역 선택을 위한 spinner 만들기
 		regionSpinner = (Spinner) findViewById(R.id.Spinner_region);
@@ -102,14 +132,7 @@ public class SetGroupActivity extends ActionBarActivity {
 		String date = dateEditText.getText().toString();
 		int people = Integer.parseInt(number.getText().toString());
 		
-//		Intent intent = new Intent(this, FragmentBaseActivity.class);
-//		intent.putExtra("title", titleInfo);
-//		intent.putExtra("description", descriptionInfo);
-//		intent.putExtra("region", region);
-//		intent.putExtra("date", date);
-//		intent.putExtra("number", people);
-//		Log.d("Sweet", "인텐트");
-//		startActivity(intent);
+		
 		
 		finish();
 	}
