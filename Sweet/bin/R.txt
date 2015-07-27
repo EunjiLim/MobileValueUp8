@@ -469,7 +469,7 @@ int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f09003d
 int id action_mode_bar_stub 0x7f09003c
 int id action_mode_close_button 0x7f090025
-int id action_settings 0x7f090093
+int id action_settings 0x7f090098
 int id activity_chooser_view_content 0x7f090026
 int id alertTitle 0x7f090030
 int id always 0x7f090019
@@ -508,6 +508,11 @@ int id info 0x7f090091
 int id line1 0x7f09008b
 int id line3 0x7f09008f
 int id listMode 0x7f09000a
+int id listView_accommodationFragment 0x7f090093
+int id listView_accompanyFragment 0x7f090094
+int id listView_allFragment 0x7f090095
+int id listView_leisureFragment 0x7f090096
+int id listView_mealFragment 0x7f090097
 int id listView_searchFragment 0x7f09007f
 int id list_item 0x7f09002a
 int id media_actions 0x7f090089
@@ -618,6 +623,11 @@ int layout select_dialog_item_material 0x7f03002b
 int layout select_dialog_multichoice_material 0x7f03002c
 int layout select_dialog_singlechoice_material 0x7f03002d
 int layout support_simple_spinner_dropdown_item 0x7f03002e
+int layout tab_accommodation 0x7f03002f
+int layout tab_accompany 0x7f030030
+int layout tab_all 0x7f030031
+int layout tab_leisure 0x7f030032
+int layout tab_meal 0x7f030033
 int menu fragment_base 0x7f0d0000
 int menu login 0x7f0d0001
 int menu main 0x7f0d0002
