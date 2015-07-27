@@ -1,18 +1,32 @@
 package com.example.sweet;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.example.sweet.LoginActivity.logIn;
+
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -25,11 +39,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SetGroupActivity extends ActionBarActivity {
-
+	private table making;
 	private Context context;
-
+	
+	String line;
+	String temp;
+	
 	// 데이터베이스에 보낼 String
 	String resultText = "";
+	String resultText1 = "";
+	String resultText2 = "";
+	String resultText3 = "";
 
 	// 날짜 선택을 위한 변수들
 	private EditText dateEditText;
@@ -163,7 +183,7 @@ public class SetGroupActivity extends ActionBarActivity {
 	public void checkChecked(View v){
 		RadioButton rb = (RadioButton) v;
 		if(rb.isChecked()) {
-			resultText = "category=" + rb.getText().toString() + "&";
+			resultText1 = "category=" + rb.getText().toString() + "&";
 
 		}
 	}
@@ -171,13 +191,88 @@ public class SetGroupActivity extends ActionBarActivity {
 	public void onClickedSetGroup(View v) {
 
 		// 값 받아오기
-		resultText = "title=" + title.getText().toString() + "&"
+		resultText2 = "title=" + title.getText().toString() + "&"
 				+ "contents=" + description.getText().toString() + "&"
 				+ "location=" + regionSpinner.getSelectedItem().toString() + "&"
 				+ "date=" + dateEditText.getText().toString() + "&"
-				+ "people=" + Integer.parseInt(number.getText().toString());
+				+ "people=" + Integer.parseInt(number.getText().toString()) +"&";
 
+		making = new table();
+		making.execute();
+		
 		Toast.makeText(context, "모임 만들기가 완료되었습니다. " + resultText, Toast.LENGTH_SHORT).show();
 		finish();
 	}
+	
+	
+	public class table extends AsyncTask<String, Void, String> {
+
+		protected void onPreExecute() {
+			super.onPreExecute();
+		}
+
+		protected String doInBackground(String... params) {
+
+			try {
+				SharedPreferences pref = getSharedPreferences("prefdb",MODE_PRIVATE);
+				
+				URL myUrl = new URL("http://52.69.67.4/table.php");
+				HttpURLConnection http = (HttpURLConnection) myUrl
+						.openConnection();
+				Log.e("tag", "2");
+				if (http != null) {
+					http.setUseCaches(false);
+					http.setDoInput(true); // 서버에서 읽기 모드 지정
+					http.setDoOutput(true); // 서버로 쓰기 모드 지정
+					http.setRequestMethod("POST");
+					http.setRequestProperty("charset", "UTF-8");
+
+					// 연결되었음 코드가 리턴되면.
+
+					//id = ID.getText().toString();
+					resultText3 ="id="+pref.getString("id1","");
+					resultText = resultText1 + resultText2 +resultText3;
+					Log.e("tag111", resultText);
+					
+
+					OutputStreamWriter outStream = new OutputStreamWriter(
+							http.getOutputStream());
+					PrintWriter writer = new PrintWriter(outStream);
+					writer.write(resultText);
+					writer.flush();
+					writer.close();
+					outStream.close();
+
+					BufferedReader br = new BufferedReader(
+							new InputStreamReader(http.getInputStream(),
+									"UTF-8"));
+
+					br.close();
+				}
+				http.disconnect();
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
