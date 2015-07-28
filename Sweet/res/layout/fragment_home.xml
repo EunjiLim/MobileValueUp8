@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    >
+    
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        />
     
     <Button
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:text="Fragment Home"
+    	android:text="모임 만들기"
     	android:id="@+id/setGroupBtn"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/mapLocationBtn"
+        android:text="지역 검색" />
     
-</LinearLayout>
+</RelativeLayout>
