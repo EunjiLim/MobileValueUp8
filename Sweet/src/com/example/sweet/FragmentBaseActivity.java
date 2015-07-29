@@ -30,6 +30,7 @@ public class FragmentBaseActivity extends ActionBarActivity implements android.s
             tabsviewPager = (ViewPager) findViewById(R.id.viewpager);
             mTabsAdapter = new TabsPagerAdapter(this, getSupportFragmentManager());
             tabsviewPager.setAdapter(mTabsAdapter);
+            tabsviewPager.setOffscreenPageLimit(3);
             
             mActionBar = getSupportActionBar();
             mActionBar.setHomeButtonEnabled(false);
