@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.example.libriary.JSONParser;
 import com.example.listview.IconTextItem;
 import com.example.listview.IconTextListAdapter;
+import com.example.sweet.GroupSelectedActivity;
 import com.example.sweet.R;
 
 public class AccommodationTab extends Fragment{
@@ -172,10 +174,8 @@ public class AccommodationTab extends Fragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(
-						getActivity().getApplicationContext(),
-						"You Clicked",0).show();
-
+					Intent intent = new Intent(getActivity(), GroupSelectedActivity.class);
+					startActivity(intent);
 			}
 		});
 		
