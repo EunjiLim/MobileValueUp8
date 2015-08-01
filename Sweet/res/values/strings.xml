@@ -16,5 +16,6 @@
     <string name="region_prompt">지역 목록</string>
     <string name="title_activity_set_location">SetLocationActivity</string>
     <string name="title_activity_group_selected">GroupSelectedActivity</string>
+    <string name="title_activity_set_specific">SetSpecificActivity</string>
 
 </resources>

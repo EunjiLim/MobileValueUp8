@@ -73,6 +73,10 @@
             android:name=".GroupSelectedActivity"
             android:label="@string/title_activity_group_selected" >
         </activity>
+        <activity
+            android:name=".SetSpecificActivity"
+            android:label="@string/title_activity_set_specific" >
+        </activity>
     </application>
 
 </manifest>
