@@ -13,6 +13,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import com.example.sweet.LoginActivity.logIn;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -71,6 +73,10 @@ public class SetGroupActivity extends ActionBarActivity {
 	RadioButton radio_accommodation, radio_meal, radio_leisure,
 			radio_accompany;
 
+	//지도 마커 위치
+	double markerLat;
+	double markerLon;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -205,6 +211,7 @@ public class SetGroupActivity extends ActionBarActivity {
 	}
 	
 	
+	
 	public class table extends AsyncTask<String, Void, String> {
 
 		protected void onPreExecute() {
@@ -266,13 +273,69 @@ public class SetGroupActivity extends ActionBarActivity {
 			
 		}
 	}
+	public void specificBtn(View v){
+		//상세 지역 설정
+		double latitude= 0;
+		double longitude = 0;
+		int zoomLevel = 0;
+		String location = regionSpinner.getSelectedItem().toString();
+		Log.d("Main", location+"이 설정됨");
+		if(location=="서울"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 11;
+		}else if(location=="경기도"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 13;
+		}else if(location=="강원도"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 11;
+		}else if(location=="경상도"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 11;
+		}else if(location=="전라도"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 11;
+		}else if(location=="충청도"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 11;
+		}else if(location=="제주도"){
+			latitude= 37.5666102;
+			longitude = 126.9783881;
+			zoomLevel = 11;
+		}else{
+			latitude= 36.1138582;
+	        longitude = 128.1728974;
+	        zoomLevel = 6;
+		}
+		
+		Intent intent = new Intent(this, SetSpecificActivity.class);
+		intent.putExtra("latitude", latitude);
+		intent.putExtra("longitude", longitude);
+		intent.putExtra("zoomLevel", zoomLevel);
+		startActivityForResult(intent, 1002);
+	}
 	
-	
-	
-	
-	
-	
-	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if(requestCode==1002){
+			if(resultCode==1){
+				double latitude = data.getDoubleExtra("lat", 0.0);
+				double longitude = data.getDoubleExtra("lon", 0.0);
+				markerLat = latitude;
+				markerLon = longitude;
+				
+			}
+		}
+	}
 	
 	
 }

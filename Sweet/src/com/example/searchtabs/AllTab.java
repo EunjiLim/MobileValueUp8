@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 import com.example.libriary.JSONParser;
 import com.example.listview.IconTextItem;
 import com.example.listview.IconTextListAdapter;
+import com.example.sweet.GroupSelectedActivity;
 import com.example.sweet.R;
 
 public class AllTab extends Fragment{
@@ -64,18 +66,6 @@ public class AllTab extends Fragment{
         //리스트뷰에 어댑더 설정
         listView1.setAdapter(adapter);
         
-        //새로 정의한 리스너로 객체를 만들어 설정
-        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                IconTextItem curItem = (IconTextItem) adapter.getItem(position);
-                String[] curData = curItem.getData();
-
-                Toast.makeText(getActivity().getApplicationContext(), "Selected : " + curData[0], Toast.LENGTH_LONG).show();
-
-            }
-        });
 
 		new JSONParse().execute();
         
@@ -173,9 +163,8 @@ public class AllTab extends Fragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(
-						getActivity().getApplicationContext(),
-						"You Clicked",0).show();
+					Intent intent = new Intent(getActivity(), GroupSelectedActivity.class);
+					startActivity(intent);
 
 			}
 		});

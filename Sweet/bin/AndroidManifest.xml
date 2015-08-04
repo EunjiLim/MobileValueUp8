@@ -70,8 +70,17 @@
             android:label="@string/title_activity_set_location" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".SearchActivity"
             android:label="@string/title_activity_search" >
+=======
+            android:name=".GroupSelectedActivity"
+            android:label="@string/title_activity_group_selected" >
+        </activity>
+        <activity
+            android:name=".SetSpecificActivity"
+            android:label="@string/title_activity_set_specific" >
+>>>>>>> f9bbc16cf481e844b9a8ff272d0d55f3cde9ba7a
         </activity>
     </application>
 
