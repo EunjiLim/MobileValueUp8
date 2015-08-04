@@ -31,6 +31,7 @@ public class FragmentHome extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
         return v;
     }
 
@@ -48,6 +49,7 @@ public class FragmentHome extends Fragment{
         setGroupBtn = (Button) view.findViewById(R.id.setGroupBtn);
         setGroupBtn.setOnClickListener(new OnClickListener() {
 			
+        
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub

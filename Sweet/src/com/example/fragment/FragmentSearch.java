@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -16,6 +17,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -35,15 +39,20 @@ import com.example.searchtabs.AllTab;
 import com.example.searchtabs.LeisureTab;
 import com.example.searchtabs.MealTab;
 import com.example.sweet.R;
+import com.example.sweet.SearchActivity;
 import com.example.sweet.SetGroupActivity;
 
 public class FragmentSearch extends Fragment {
 
 	FragmentTabHost tabHost;
+	Context context;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		//콘텍스트
+		context = getActivity();
+		
 		View v = inflater.inflate(R.layout.fragment_search, container, false);
 
 		tabHost = new FragmentTabHost(getActivity());
@@ -61,6 +70,7 @@ public class FragmentSearch extends Fragment {
         tabHost.addTab(tabHost.newTabSpec("Accompany").setIndicator("동행"),
                 AccompanyTab.class, null);
         
+        setHasOptionsMenu(true);     
         return tabHost;
 	}
 
@@ -76,5 +86,24 @@ public class FragmentSearch extends Fragment {
 			String date, int people) {
 		Toast.makeText(getActivity().getApplicationContext(),
 				"" + title + people, Toast.LENGTH_SHORT).show();
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	    inflater.inflate(R.menu.main, menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    int id = item.getItemId();
+	    switch (id) {
+	        case R.id.action_search:
+	            // do stuff
+	        	Intent intent = new Intent(getActivity(), SearchActivity.class);
+	        	startActivity(intent);
+	            return true;
+	    }
+
+	    return false;
 	}
 }
