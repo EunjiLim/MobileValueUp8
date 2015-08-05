@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -38,12 +39,20 @@ public class LoginActivity extends ActionBarActivity {
 	// boolean variable for login
 	boolean loginFlag = false;
 
+	//액션바
+	private ActionBar mActionBar;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		startActivity(new Intent(this, SplashActivity.class));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
+		
+		//액션바
+		mActionBar = getSupportActionBar();
+		mActionBar.setDisplayShowTitleEnabled(true);
+		mActionBar.setTitle(R.string.title_login);
+		
 		ID = (EditText) findViewById(R.id.emailAddress);
 		PW = (EditText) findViewById(R.id.pw);
 		login = (Button) findViewById(R.id.button_login);

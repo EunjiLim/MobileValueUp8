@@ -1,94 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-<RelativeLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp" >
+    android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/temporaryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:text=" f 페이스북으로 회원 가입" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="661dp"
+        android:background="@drawable/background"
+        android:padding="10dp" >
 
-    <TextView
-        android:id="@+id/TextView_signInByEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/temporaryButton"
-        android:layout_centerHorizontal="true"
-        android:padding="20dp"
-        android:text="ㅡ 이메일로 회원가입 ㅡ" />
+        <View
+            android:id="@+id/View_signUp1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
-    <EditText
-        android:id="@+id/EditText_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/TextView_signInByEmail"
-        android:hint="이메일" />
+        <EditText
+            android:id="@+id/EditText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp1"
+            android:background="@drawable/round_corner"
+            android:hint="이메일"
+            android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/EditText_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_id"
-        android:hint="비밀번호" />
+        <View
+            android:id="@+id/View_signUp2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_id" />
 
-    <EditText
-        android:id="@+id/EditText_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_password"
-        android:hint="이름" />
-    
-    <EditText
-        android:id="@+id/EditText_dateOfBirth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_name"
-        android:hint="생년월일"/>
-    
-    <EditText
-        android:id="@+id/EditText_sex"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_dateOfBirth"
-        android:hint="성별"/>
-    
-    <EditText
-        android:id="@+id/EditText_cellNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_sex"
-        android:hint="휴대폰 번호"/>
-    
-    
-    
-    <EditText
-        android:id="@+id/EditText_facebookId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_below="@id/EditText_cellNumber"
-        android:hint="페이스북 아이디"/>
+        <EditText
+            android:id="@+id/EditText_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp2"
+            android:background="@drawable/round_corner"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:padding="10dp" />
 
-    <Button
-        android:id="@+id/Button_finishSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/EditText_facebookId"
-        android:text="회원 가입" />
+        <View
+            android:id="@+id/View_signUp2_2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_password" />
 
-    <Button
-        android:id="@+id/Button_duplicationCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/EditText_id"
-        android:layout_alignRight="@+id/EditText_id"
-        android:text="중복확인" />
+        <EditText
+            android:id="@+id/EditText_passwordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp2_2"
+            android:background="@drawable/round_corner"
+            android:hint="비밀번호 확인"
+            android:inputType="textPassword"
+            android:padding="10dp" />
 
-</RelativeLayout>
+        <View
+            android:id="@+id/View_signUp3"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_passwordConfirm" />
+
+        <EditText
+            android:id="@+id/EditText_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp3"
+            android:background="@drawable/round_corner"
+            android:hint="이름"
+            android:padding="10dp" />
+
+        <View
+            android:id="@+id/View_signUp4"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_name" />
+
+        <EditText
+            android:id="@+id/EditText_dateOfBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp4"
+            android:background="@drawable/round_corner"
+            android:hint="생년월일  ex)920803"
+            android:padding="10dp" />
+
+        <View
+            android:id="@+id/View_signUp5"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_dateOfBirth" />
+
+        <RadioGroup
+            android:id="@+id/RadioGroup_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp5"
+            android:background="@drawable/round_corner"
+            android:padding="5dp"
+            android:orientation="horizontal">
+            
+            <RadioButton
+                android:id="@+id/RadioButton_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남자" />
+            
+            <RadioButton
+                android:id="@+id/RadioButton_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자" />
+            
+            
+        </RadioGroup>
+
+        <View
+            android:id="@+id/View_signUp6"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/RadioGroup_sex" />
+
+        <EditText
+            android:id="@+id/EditText_cellNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp6"
+            android:background="@drawable/round_corner"
+            android:hint="휴대폰 번호"
+            android:padding="10dp" />
+
+        <View
+            android:id="@+id/View_signUp7"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_cellNumber" />
+
+        <EditText
+            android:id="@+id/EditText_facebookId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp7"
+            android:background="@drawable/round_corner"
+            android:hint="카카오톡 아이디"
+            android:padding="10dp" />
+
+        <View
+            android:id="@+id/View_signUp8"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/EditText_facebookId" />
+        
+        <Button
+            android:id="@+id/Button_finishSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_signUp8"
+            android:background="@drawable/roundcorner_signup"
+            android:text="회원가입"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/Button_duplicationCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/EditText_id"
+            android:layout_alignRight="@+id/EditText_id"
+            android:background="@drawable/roundcorner_signup"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:text="@string/check_idDuplication"></Button>
+    </RelativeLayout>
+
 </ScrollView>

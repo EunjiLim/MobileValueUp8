@@ -19,5 +19,6 @@
 	<string name="title_activity_search">모임 검색</string>
     <string name="title_activity_group_selected">GroupSelectedActivity</string>
     <string name="title_activity_set_specific">SetSpecificActivity</string>
-
+	<string name="title_login">로그인</string>
+	<string name="check_idDuplication">중복확인</string>
 </resources>

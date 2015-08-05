@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,24 +21,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class SignUpActivity extends Activity {
 
 	private MyAsyncTask myAsyncTask;
 	private checkup checking;
-	EditText ID, PW;
-	EditText NAME, BIRTHDAY, SEX, PHONE, FACEBOOK;
+	EditText ID, PW, PW2;
+	EditText NAME, BIRTHDAY, PHONE, FACEBOOK;
+	RadioGroup sexRadioGroup;
+	RadioButton SEX;
 	Button finish, duplicationCheck;
-	String id, pw, name, birthday, sex, phone, facebook;
+	String id, pw, name, birthday, sex, phone, kakao;
 	String temp1 = "", temp2 = "";
 	String line = "";
 
 	// context for toast.maketext
 	private Context context;
-	
-	//ID Duplication check을 위한 변수
-	boolean checkPoint=false;
+
+	// ID Duplication check을 위한 변수
+	boolean checkPoint = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +50,12 @@ public class SignUpActivity extends Activity {
 		setContentView(R.layout.activity_signup);
 		ID = (EditText) findViewById(R.id.EditText_id);
 		PW = (EditText) findViewById(R.id.EditText_password);
+		PW2 = (EditText) findViewById(R.id.EditText_passwordConfirm);
 		NAME = (EditText) findViewById(R.id.EditText_name);
 		BIRTHDAY = (EditText) findViewById(R.id.EditText_dateOfBirth);
-		SEX = (EditText) findViewById(R.id.EditText_sex);
+		sexRadioGroup = (RadioGroup) findViewById(R.id.RadioGroup_sex);
+		SEX = (RadioButton) findViewById(sexRadioGroup
+				.getCheckedRadioButtonId());
 		PHONE = (EditText) findViewById(R.id.EditText_cellNumber);
 		FACEBOOK = (EditText) findViewById(R.id.EditText_facebookId);
 		finish = (Button) findViewById(R.id.Button_finishSignUp);
@@ -63,10 +72,68 @@ public class SignUpActivity extends Activity {
 
 		finish.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				myAsyncTask = new MyAsyncTask();
-				myAsyncTask.execute();
+				// 성별 선택 결과 받아오기
+				SEX = (RadioButton) findViewById(sexRadioGroup
+						.getCheckedRadioButtonId());
+
+				if (checkPoint == false) {
+					// 아이디 중복 확인 여부
+					Toast.makeText(
+							context,
+							isValidEmail(ID.getText().toString())
+									+ "ID 중복 확인을 해주세요.", 1).show();
+				} else if (isValidEmail(ID.getText().toString())) {
+					// 이메일 형식 체크
+					Toast.makeText(context, "올바른 이메일 형식이 아닙니다.", 1).show();
+				} else if (!(PW.getText().toString().equals(PW2.getText()
+						.toString()))) {
+					// 패스워드 확인
+					Toast.makeText(
+							context,
+							(PW.getText().toString() == PW2.getText()
+									.toString()) + "입력한 비밀번호가 일치하지 않습니다.", 1)
+							.show();
+				} else if (isValidBirthday(BIRTHDAY.getText().toString())) {
+					// 생년월일 확인
+					Toast.makeText(context, "생년월일을 ex)920803형식으로 입력해주세요.", 1)
+							.show();
+				} else if (PW.getText().toString().equals("")
+						| SEX.getText().toString().equals("")
+						| PHONE.getText().toString().equals("")
+						| FACEBOOK.getText().toString().equals("")) {
+					Toast.makeText(context, "빈 칸을 모두 입력해주세요.", 1).show();
+				} else {
+					myAsyncTask = new MyAsyncTask();
+					myAsyncTask.execute();
+				}
 			}
 		});
+	}
+
+	// 이메일 형식 검사
+	public boolean isValidEmail(String email) {
+		boolean err = false;
+		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(email);
+		if (!m.matches()) {
+			err = true;
+		}
+		return err;
+	}
+
+	// 생년월일 형식 검사
+	public boolean isValidBirthday(String birthday) {
+		boolean err = false;
+		String regex = "^[0-9]{6}$";
+
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(birthday);
+		if (!m.matches()) {
+			err = true;
+		}
+		return err;
 	}
 
 	public class MyAsyncTask extends AsyncTask<String, Void, String> {
@@ -95,7 +162,7 @@ public class SignUpActivity extends Activity {
 					birthday = BIRTHDAY.getText().toString();
 					sex = SEX.getText().toString();
 					phone = PHONE.getText().toString();
-					facebook = FACEBOOK.getText().toString();
+					kakao = FACEBOOK.getText().toString();
 
 					// php변수에 값을 대입하고 buffer에 잇는 과정
 					StringBuffer buffer = new StringBuffer();
@@ -107,7 +174,7 @@ public class SignUpActivity extends Activity {
 					buffer.append("sex").append("=").append(sex).append("&");
 					buffer.append("phone").append("=").append(phone)
 							.append("&");
-					buffer.append("facebook").append("=").append(facebook);
+					buffer.append("facebook").append("=").append(kakao);
 					Log.e("tag", buffer.toString());
 
 					OutputStreamWriter outStream = new OutputStreamWriter(
@@ -148,7 +215,8 @@ public class SignUpActivity extends Activity {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			// 회원가입 완료 되면 LoginActivity로 화면 전환
-			Toast.makeText(context, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT)
+					.show();
 			Intent intent = new Intent(context, LoginActivity.class);
 			startActivity(intent);
 		}
@@ -207,10 +275,10 @@ public class SignUpActivity extends Activity {
 
 					if (temp2.equals("1")) {
 						checkPoint = false;
-						Log.e("tag", "이미 ID가 존재합니다."); 
+						Log.e("tag", "이미 ID가 존재합니다.");
 					} else {
 						checkPoint = true;
-						Log.e("tag", "you can use the ID"); 
+						Log.e("tag", "you can use the ID");
 					}
 					temp2 = "";
 					br.close();
