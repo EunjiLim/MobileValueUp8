@@ -49,6 +49,7 @@ public class AllTab extends Fragment{
 	private static final String TAG_OS = "board";
 
 	private static final String TAG_ID = "ID";
+	private static final String TAG_CATEGORY = "category";
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_LOCATION = "location";
 	private static final String TAG_DATE = "date";
@@ -113,6 +114,7 @@ public class AllTab extends Fragment{
 
 					// Storing JSON item in a Variable
 					String id = c.getString(TAG_ID);
+					String category = c.getString(TAG_CATEGORY);
 					String title = c.getString(TAG_TITLE);
 					String location = c.getString(TAG_LOCATION);
 					String date = c.getString(TAG_DATE);
@@ -139,10 +141,28 @@ public class AllTab extends Fragment{
 					Resources res = getResources();
 
 					Log.i("TAG", "*");
-					adapter.addItem(new IconTextItem(res
-							.getDrawable(R.drawable.profileicon), title, "1",
-							location, date, people));
-					listView1.setAdapter(adapter);
+					//카테고리별 게시판 아이콘 적용
+					if (category.equals("숙박")) {
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.house_coloricon), title,
+								"1", location, date, people));
+						listView1.setAdapter(adapter);
+					}else if(category.equals("레저")){
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.leisure_coloricon), title,
+								"1", location, date, people));
+						listView1.setAdapter(adapter);
+					}else if(category.equals("식사")){
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.eat_coloricon), title,
+								"1", location, date, people));
+						listView1.setAdapter(adapter);
+					}else {
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.with_coloricon), title,
+								"1", location, date, people));
+						listView1.setAdapter(adapter);
+					}
 					Log.i("TAG", "(");
 				}
 			} catch (JSONException e) {

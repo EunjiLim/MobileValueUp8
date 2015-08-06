@@ -150,7 +150,7 @@ public class MealTab extends Fragment{
 
 					Log.i("TAG", "*");
 					adapter.addItem(new IconTextItem(res
-							.getDrawable(R.drawable.profileicon), title, "1",
+							.getDrawable(R.drawable.eat_coloricon), title, "1",
 							location, date, people));
 					listView1.setAdapter(adapter);
 					Log.i("TAG", "(");

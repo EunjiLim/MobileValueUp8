@@ -3,59 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
-    <ImageView
-        android:id="@+id/ImageView_profile"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:padding="8dp"
-        android:layout_gravity="center_vertical"
-        />
-    
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/Relative1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/TextView_listRegion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <ImageView
+            android:id="@+id/ImageView_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below = "@id/TextView_listRegion"
+            android:padding="5dp" />
+    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <TextView 
+        android:layout_height="wrap_content">
+
+        <TextView
             android:id="@+id/TextView_listTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="16dp"
             android:padding="4dp"
-            />
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/TextView_listNumberOfMember"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/TextView_listTitle"
+            android:paddingRight="20dp"
             android:gravity="right" />
+        
+        <View
+            android:id="@+id/View_listline1"
+            android:layout_width="400dp"
+            android:layout_height="1dp"
+            android:background="#929497"
+            android:layout_below="@id/TextView_listTitle" />
 
-            <RelativeLayout
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/View_listline1"
+            android:padding="4dp" >
+
+            <TextView
+                android:id="@+id/TextView_listDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/TextView_listFixedNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/TextView_listTitle"
-                android:padding="4dp" >
+                android:layout_below="@id/TextView_listDate"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/TextView_listRegion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                
-                <TextView
-                    android:id="@+id/TextView_listDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/TextView_listRegion" />
-                
-                <TextView
-                    android:id="@+id/TextView_listFixedNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/TextView_listDate" />
-                
-            </RelativeLayout>
-	</RelativeLayout>
 </LinearLayout>

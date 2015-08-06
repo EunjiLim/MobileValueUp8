@@ -28,11 +28,11 @@ import com.example.listview.IconTextListAdapter;
 import com.example.sweet.GroupSelectedActivity;
 import com.example.sweet.R;
 
-public class AccommodationTab extends Fragment{
-	
+public class AccommodationTab extends Fragment {
+
 	ListView listView1;
 	IconTextListAdapter adapter;
-	
+
 	// 데이터를 읽어올 때 사용할 변수
 	ArrayList<HashMap<String, String>> boardlist = new ArrayList<HashMap<String, String>>();
 
@@ -53,36 +53,38 @@ public class AccommodationTab extends Fragment{
 	private static final String TAG_DATE = "date";
 	private static final String TAG_PEOPLE = "people";
 
-	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_accommodation, container, false);
-        
-        listView1 = (ListView) v.findViewById(R.id.listView_accommodationFragment);
-        adapter = new IconTextListAdapter(getActivity());
-        
-        //리스트뷰에 어댑더 설정
-        listView1.setAdapter(adapter);
-        
-        //새로 정의한 리스너로 객체를 만들어 설정
-        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.tab_accommodation, container, false);
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                IconTextItem curItem = (IconTextItem) adapter.getItem(position);
-                String[] curData = curItem.getData();
+		listView1 = (ListView) v
+				.findViewById(R.id.listView_accommodationFragment);
+		adapter = new IconTextListAdapter(getActivity());
 
-                Toast.makeText(getActivity().getApplicationContext(), "Selected : " + curData[0], Toast.LENGTH_LONG).show();
+		// 리스트뷰에 어댑더 설정
+		listView1.setAdapter(adapter);
 
-            }
-        });
+		// 새로 정의한 리스너로 객체를 만들어 설정
+		listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				IconTextItem curItem = (IconTextItem) adapter.getItem(position);
+				String[] curData = curItem.getData();
+
+				Toast.makeText(getActivity().getApplicationContext(),
+						"Selected : " + curData[0], Toast.LENGTH_LONG).show();
+
+			}
+		});
 
 		new JSONParse().execute();
-        
-        return v;
-    }
-	
+
+		return v;
+	}
+
 	private class JSONParse extends AsyncTask<String, String, JSONObject> {
 		private ProgressDialog pDialog;
 
@@ -128,32 +130,13 @@ public class AccommodationTab extends Fragment{
 					String location = c.getString(TAG_LOCATION);
 					String date = c.getString(TAG_DATE);
 					String people = c.getString(TAG_PEOPLE);
-					// Adding value HashMap key => value
-
-					/*
-					 * HashMap<String, String> map = new HashMap<String,
-					 * String>();
-					 * 
-					 * map.put(TAG_ID, id); map.put(TAG_TITLE, title);
-					 * map.put(TAG_DATE, date); map.put(TAG_PEOPLE, people);
-					 */
-
-					/*
-					 * Log.i("TAG", "*"); boardlist.add(map);
-					 */
-					/*
-					 * adapter = new SimpleAdapter(getActivity(), boardlist,
-					 * R.layout.list_v, new String[] { TAG_VER,TAG_NAME, TAG_API
-					 * }, new int[] { R.id.vers,R.id.name, R.id.api});
-					 */
-
 					Resources res = getResources();
 
-					Log.i("TAG", "*");
 					adapter.addItem(new IconTextItem(res
-							.getDrawable(R.drawable.profileicon), title, "1",
-							location, date, people));
+							.getDrawable(R.drawable.house_coloricon), title,
+							"1", location, date, people));
 					listView1.setAdapter(adapter);
+
 					Log.i("TAG", "(");
 				}
 			} catch (JSONException e) {
@@ -162,27 +145,30 @@ public class AccommodationTab extends Fragment{
 
 		}
 	}
-    
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-        super.onViewCreated(view, savedInstanceState);
 
-		//리스트 뷰 항목 클릭했을 때
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onViewCreated(view, savedInstanceState);
+
+		// 리스트 뷰 항목 클릭했을 때
 		listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-					Intent intent = new Intent(getActivity(), GroupSelectedActivity.class);
-					startActivity(intent);
+				Intent intent = new Intent(getActivity(),
+						GroupSelectedActivity.class);
+				startActivity(intent);
 			}
 		});
-		
-    }
-    
-    public void setData(String title, String description, String location, String date, int people){
-    	Toast.makeText(getActivity().getApplicationContext(), ""+title+people, Toast.LENGTH_SHORT).show();
-    }
+
+	}
+
+	public void setData(String title, String description, String location,
+			String date, int people) {
+		Toast.makeText(getActivity().getApplicationContext(),
+				"" + title + people, Toast.LENGTH_SHORT).show();
+	}
 
 }
