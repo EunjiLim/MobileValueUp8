@@ -37,7 +37,8 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+        	android:theme="@style/CustomActionBarTheme"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +52,7 @@
         </activity>
         <activity
             android:name=".FragmentBaseActivity"
-            android:label="@style/CustomActionBarTheme" >
+            android:theme="@style/CustomActionBarTheme2" >
         </activity>
         <activity
             android:name=".TestActivity"
@@ -59,7 +60,8 @@
         </activity>
         <activity
             android:name=".SetGroupActivity"
-            android:label="@string/title_activity_set_group" >
+            android:label="@string/title_activity_set_group"
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name=".SignUpActivity"

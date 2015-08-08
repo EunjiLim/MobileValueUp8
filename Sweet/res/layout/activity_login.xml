@@ -1,3 +1,4 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,25 +11,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sweet.LoginActivity" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="로그인"
-            android:textSize="40sp" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/upper_round"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_marginTop="40dp" >
 
         <ImageView
             android:id="@+id/ImageView_iconEmail"
@@ -46,7 +36,8 @@
             android:layout_centerVertical="true"
             android:ems="10"
             android:background="@null"
-            android:hint="이메일" >
+            android:hint="아이디"
+            android:textSize="13dp" >
 
             <requestFocus />
         </EditText>
@@ -55,12 +46,13 @@
     <View
         android:id="@+id/View_login1"
         android:layout_width="match_parent"
-        android:layout_height="3dp" />
+        android:layout_height="2dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/lower_round">
+        android:background="@drawable/lower_round"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/ImageView_iconPassword"
@@ -79,7 +71,8 @@
             android:background="@null"
             android:ems="10" 
             android:inputType="textPassword"
-            android:hint="비밀번호" />
+            android:hint="비밀번호"
+            android:textSize="13dp" />
     </RelativeLayout>
 
     <View
@@ -119,15 +112,15 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <Button
+        <TextView
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
-            android:onClick="onLoginWithoutId"
-            android:text="로그인 없이 둘러보기" />
+            android:layout_marginTop="20dp"
+            android:text="로그인 없이 둘러보기"
+            android:textColor="#ffffff" />
     </RelativeLayout>
 
 </LinearLayout>

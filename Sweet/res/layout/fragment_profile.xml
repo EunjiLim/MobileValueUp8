@@ -8,27 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         >
         
         <RelativeLayout
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
             <ImageView
                 android:id="@+id/imageView1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_launcher" />
-
-            <Button
-                android:id="@+id/button2"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp" />
+                android:src="@drawable/profile_icon"
+                android:layout_margin="20dp" />
 
         </RelativeLayout>
         
@@ -42,69 +35,127 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="이름" />
+                android:layout_marginTop="20dp"
+                android:text="이름(성별)"/>
+            
+            <View 
+                android:layout_width="120dp"
+                android:layout_height="1dp"
+                android:background="#ff000000"
+                />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="나이" />
-
+                android:text="생년월일"
+                android:textSize="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+            
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="성별" />
+                android:text="아이디" 
+                android:textSize="12dp"
+                android:layout_marginBottom="5dp"/>
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="국적/지역" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="관심사/취미" />
+                android:text="연락처"
+                android:textSize="12dp"
+                android:layout_marginBottom="5dp" />
             
         </LinearLayout>
         
         
-        </LinearLayout>
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ff000000"
+        />
+    
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         >
         
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:background="#ffaaeeff" >
+        <TextView 
+       		android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="만든 모임"
+            android:textSize="12dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:text="대화하기" />
+            android:layout_centerVertical="true"
+            android:background="@drawable/gray_arrowbutton"
+            android:layout_marginRight="10dp" />
+        
+    </RelativeLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ff000000"
+        />
+    
+    <ListView 
+        android:id="@+id/ListView_groupMade"
+       	android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ff000000"
+        />
+    
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         >
+        
+        <TextView 
+       		android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="가입한 모임"
+            android:textSize="12dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffffff" >
-            
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="여행지  사진 및 소개"
-                android:textSize="20dp"
-                android:layout_centerInParent="true" />
-
-        </RelativeLayout>
-
-</RelativeLayout>
+        <Button
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/gray_arrowbutton"
+            android:layout_marginRight="10dp" />
+        
+    </RelativeLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ff000000"
+        />
+    
+    <ListView 
+        android:id="@+id/ListView_groupJoined"
+       	android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

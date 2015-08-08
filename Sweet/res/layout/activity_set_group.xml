@@ -11,7 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="카테고리"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="16dp"
+        android:textSize="12dp" />
 
     <RadioGroup
         android:id="@+id/RadioGroup_category"
@@ -20,61 +22,71 @@
         android:layout_below="@id/category"
         android:orientation="horizontal"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" >
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" >
 
         <RadioButton
             android:id="@+id/RadioButton_accommodation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
             android:textColor="#FFFFFF"
-            android:text="숙박"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/accomodation_check"
+            android:button="@android:color/transparent"
+            android:layout_marginLeft="25dp" />
 
         <RadioButton
             android:id="@+id/RadioButton_meal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="식사" 
-            android:layout_weight="1"/>
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/meal_check"
+            android:button="@android:color/transparent"
+            android:layout_marginLeft="30dp"/>
 
         <RadioButton
             android:id="@+id/RadioButton_leisure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="레저"
-            android:layout_weight="1" />
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/leisure_check"
+            android:button="@android:color/transparent"
+            android:layout_marginLeft="30dp" />
 
         <RadioButton
             android:id="@+id/RadioButton_accompany"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="동행"
-            android:layout_weight="1" />
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:background="@drawable/accompany_check"
+            android:button="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="25dp" />
     </RadioGroup>
 
     <View
         android:id="@+id/View_forLine1"
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="#ffffff"/>
 
     <EditText
         android:id="@+id/EditText_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_corner"
-        android:hint="제목"
+        android:layout_height="35dp"
+        android:background="@drawable/text_box"
+        android:hint="모임 이름을 적어주세요."
         android:padding="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/View_forLine2"
         android:layout_width="match_parent"
-        android:layout_height="5dp" />
+        android:layout_height="1dp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -87,18 +99,20 @@
 	    <EditText
 	        android:id="@+id/EditText_description"
 	        android:layout_width="match_parent"
-	        android:layout_height="150dp"
-	        android:background="@drawable/round_corner"
+	        android:layout_height="130dp"
+	        android:background="@drawable/text_largebox"
 	        android:hint="상세설명"
-	        android:padding="10dp" />
+	        android:padding="10dp"
+	        android:textSize="12dp" />
 	    
 	     <TextView
             android:id="@+id/TextView_letterNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/EditText_description"
-            android:layout_alignRight="@+id/EditText_description"
-            android:text="TextView" />
+            android:layout_alignParentRight="true"
+            android:text="TextView"
+            android:layout_marginRight="5dp" />
         
     </RelativeLayout>
     
@@ -108,38 +122,37 @@
         android:layout_height="1dp"
         android:background="#ffffffff" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/round_corner"
+        android:layout_height="40dp"
+        android:background="@drawable/area_box"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         >
-    
-	    <TextView
-	        android:id="@+id/TextView_region"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="지역"
-	        android:textColor="#ff000000" />
-	
+
 	    <Spinner
 	        android:id="@+id/Spinner_region"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_centerVertical="true"
+	        android:layout_marginRight="20dp"
+	        android:layout_toLeftOf="@+id/Button_areaSelect"
 	        android:drawSelectorOnTop="true"
-	        android:prompt="@string/region_prompt" />     
-	        
+	        android:prompt="@string/region_prompt" />
+
 	    <Button
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:onClick="specificBtn"
-	        />
+	        android:id="@+id/Button_areaSelect"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignTop="@+id/Spinner_region"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/area_icon"
+	        android:onClick="specificBtn" />
         
-    </LinearLayout>
+    </RelativeLayout>
     
     
     <View
@@ -148,35 +161,36 @@
         android:layout_height="1dp"
         android:background="#FFFFFF" />
     
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/round_corner"
+        android:layout_height="40dp"
+        android:background="@drawable/date_box"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:padding="5dp"
         >
-    
-	    <TextView
-	        android:id="@+id/TextView_date"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="날짜"
-	        android:textColor="#ff000000" />
+
 
 	    <EditText
 	        android:id="@+id/EditText_selectedDate"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:background="#FFFFFF"
-	        android:hint="날짜를 고르세요."
-	        android:textColor="#5CCCC6" />
+	        android:layout_height="30dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:layout_margin="5dp"
+	        android:ems="10" />
+	    
+	    <Button
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/date_icon"
 	        />
+
         
-    </LinearLayout>
+    </RelativeLayout>
 
     <View
         android:id="@+id/View_forLine5"
@@ -184,32 +198,26 @@
         android:layout_height="1dp"
         android:background="#FFFFFF" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/secondRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_corner"
-        android:orientation="horizontal"
+        android:layout_height="40dp"
+        android:background="@drawable/persons_box"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="12dp" >
 
-        <TextView
-            android:id="@+id/TextView_fixedNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="30dp"
-            android:text="정원"
-            android:textColor="#ff000000" />
-
         <EditText
             android:id="@+id/EditText_fixedNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="숫자로 입력하세요."
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/persons_icon"
+            android:inputType="number"
              />
-    </LinearLayout>
+    </RelativeLayout>
 
     <Button
         android:layout_width="200dp"

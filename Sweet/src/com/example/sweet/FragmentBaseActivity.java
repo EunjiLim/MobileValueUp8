@@ -25,7 +25,10 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 	private TabsPagerAdapter mTabsAdapter;
 
 	Tab SearchTab;
-
+	Tab HomeTab;
+	Tab ProfileTab;
+	Tab SettingTab;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,23 +49,25 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 		mActionBar.setDisplayShowTitleEnabled(true);
 		mActionBar.setDisplayShowHomeEnabled(true);
 
-		Tab HomeTab = getSupportActionBar().newTab().setTabListener(this);
+		HomeTab = getSupportActionBar().newTab().setTabListener(this);
 		SearchTab = getSupportActionBar().newTab().setTabListener(this);
-		Tab ProfileTab = getSupportActionBar().newTab().setTabListener(this);
-		Tab SettingTab = getSupportActionBar().newTab().setTabListener(this);
+		ProfileTab = getSupportActionBar().newTab().setTabListener(this);
+		SettingTab = getSupportActionBar().newTab().setTabListener(this);
 		
 		//탭에 아이콘 넣기
+
 		HomeTab.setIcon(R.drawable.home_button);
 		SearchTab.setIcon(R.drawable.search_button);
 		ProfileTab.setIcon(R.drawable.mypage_button);
 		SettingTab.setIcon(R.drawable.set_button);
+
 
 		getSupportActionBar().addTab(HomeTab);
 		getSupportActionBar().addTab(SearchTab);
 		getSupportActionBar().addTab(ProfileTab);
 		getSupportActionBar().addTab(SettingTab);
 		
-		//getSupportActionBar().setTitle("Home");
+		getSupportActionBar().setTitle("Home");
 		
 		tabsviewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -77,7 +82,7 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 					getSupportActionBar().setIcon(R.drawable.ic_favorite_border_white_24dp);
 				}
 				else if(position == 2)
-					getSupportActionBar().setTitle("나");
+					getSupportActionBar().setTitle("내 정보");
 				else
 					getSupportActionBar().setTitle("설정");
 				getSupportActionBar().setSelectedNavigationItem(position);
