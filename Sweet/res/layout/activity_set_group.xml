@@ -138,6 +138,7 @@
 	        android:layout_height="30dp"
 	        android:layout_centerVertical="true"
 	        android:layout_marginRight="20dp"
+	        android:layout_centerHorizontal="true"
 	        android:layout_toLeftOf="@+id/Button_areaSelect"
 	        android:drawSelectorOnTop="true"
 	        android:prompt="@string/region_prompt" />
@@ -175,10 +176,11 @@
 	    <EditText
 	        android:id="@+id/EditText_selectedDate"
 	        android:layout_width="wrap_content"
-	        android:layout_height="30dp"
+	        android:layout_height="wrap_content"
 	        android:layout_centerHorizontal="true"
 	        android:layout_centerVertical="true"
-	        android:layout_margin="5dp"
+	        android:background="@null"
+	        android:layout_margin="2dp"
 	        android:ems="10" />
 	    
 	    <Button
@@ -210,13 +212,18 @@
 
         <EditText
             android:id="@+id/EditText_fixedNumber"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:background="@drawable/persons_icon"
-            android:inputType="number"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
              />
+        
+        <ImageView
+            android:id="@+id/ImageView_fixedNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/persons_icon"
+            />
     </RelativeLayout>
 
     <Button
