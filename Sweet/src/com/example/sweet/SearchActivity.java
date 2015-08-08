@@ -46,6 +46,7 @@ public class SearchActivity extends ActionBarActivity {
 	// JSON Node Names
 	private static final String TAG_OS = "board";
 	private static final String TAG_ID = "ID";
+	private static final String TAG_CATEGORY = "category";
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_LOCATION = "location";
 	private static final String TAG_DATE = "date";
@@ -75,16 +76,16 @@ public class SearchActivity extends ActionBarActivity {
 		// 리스트뷰에 어댑더 설정
 		listview.setAdapter(adapter);
 
-		Resources res = getResources();
+/*		Resources res = getResources();
 		adapter.addItem(new IconTextItem(res
 				.getDrawable(R.drawable.profileicon), "title", "1", "location",
 				"date", "people"));
-		listview.setAdapter(adapter);
+		listview.setAdapter(adapter);*/
 
 		// 검색 버튼이 눌렸을 때
 		searchButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (searchText.getText().toString() == "") {
+				if (searchText.getText().toString().equals("")) {
 					Toast.makeText(context, "검색어를 입력하세요.", Toast.LENGTH_SHORT)
 							.show();
 				} else
@@ -98,8 +99,7 @@ public class SearchActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(context,
-						"You Clicked", 0).show();
+				Toast.makeText(context, "You Clicked", 0).show();
 
 			}
 		});
@@ -126,14 +126,12 @@ public class SearchActivity extends ActionBarActivity {
 			JSONParser jParser = new JSONParser();
 
 			// 검색 버튼이 눌리고 spinner에 들어온 string에 따라 url이 변한다.
-			if (spinner.getSelectedItem().toString() == "전체 검색")
-				url = "";
-			else if (spinner.getSelectedItem().toString() == "ID")
-				url = "";
-			else if (spinner.getSelectedItem().toString() == "제목")
-				url = "";
-			else if (spinner.getSelectedItem().toString() == "지역")
-				url = "";
+			if (spinner.getSelectedItem().toString().equals("ID"))
+				url = "http://52.69.67.4/findid.php";
+			else if (spinner.getSelectedItem().toString().equals("제목"))
+				url = "http://52.69.67.4/findtitle.php";
+			else if (spinner.getSelectedItem().toString().equals("지역"))
+				url = "http://52.69.67.4/findlocation.php";
 
 			// Getting JSON from URL
 			Log.i("TAG", "$");
@@ -156,6 +154,7 @@ public class SearchActivity extends ActionBarActivity {
 
 					// Storing JSON item in a Variable
 					String id = c.getString(TAG_ID);
+					String category = c.getString(TAG_CATEGORY);
 					String title = c.getString(TAG_TITLE);
 					String location = c.getString(TAG_LOCATION);
 					String date = c.getString(TAG_DATE);
@@ -164,9 +163,29 @@ public class SearchActivity extends ActionBarActivity {
 					Resources res = getResources();
 
 					Log.i("TAG", "*");
-					adapter.addItem(new IconTextItem(res
-							.getDrawable(R.drawable.profileicon), title, "1",
-							location, date, people));
+					//카테고리별 게시판 아이콘 적용
+					if (category.equals("숙박")) {
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.house_coloricon), title,
+								"1", location, date, people));
+						listview.setAdapter(adapter);
+					}else if(category.equals("레저")){
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.leisure_coloricon), title,
+								"1", location, date, people));
+						listview.setAdapter(adapter);
+					}else if(category.equals("식사")){
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.eat_coloricon), title,
+								"1", location, date, people));
+						listview.setAdapter(adapter);
+					}else {
+						adapter.addItem(new IconTextItem(res
+								.getDrawable(R.drawable.with_coloricon), title,
+								"1", location, date, people));
+						listview.setAdapter(adapter);
+					}
+					
 					listview.setAdapter(adapter);
 					Log.i("TAG", "(");
 				}

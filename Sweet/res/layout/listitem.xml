@@ -20,13 +20,13 @@
             android:id="@+id/ImageView_profile"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_below = "@id/TextView_listRegion"
+            android:layout_below="@id/TextView_listRegion"
             android:padding="5dp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/TextView_listTitle"
@@ -41,15 +41,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/TextView_listTitle"
-            android:paddingRight="20dp"
-            android:gravity="right" />
-        
+            android:gravity="right"
+            android:paddingRight="20dp" />
+
         <View
             android:id="@+id/View_listline1"
-            android:layout_width="400dp"
+            android:layout_width="300dp"
             android:layout_height="1dp"
-            android:background="#929497"
-            android:layout_below="@id/TextView_listTitle" />
+            android:layout_below="@id/TextView_listTitle"
+            android:background="#929497" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/TextView_listDate"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold" />
 
@@ -69,6 +69,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/TextView_listDate"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/mint_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/mint_arrowbutton" />
         </RelativeLayout>
     </RelativeLayout>
 

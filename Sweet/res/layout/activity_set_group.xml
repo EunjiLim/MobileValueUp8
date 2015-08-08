@@ -217,10 +217,11 @@
         android:layout_below="@+id/secondRelativeLayout"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/moim_button"
+        android:background="@drawable/roundcorner_login"
         android:gravity="center"
         android:layout_gravity="center"
         android:onClick="onClickedSetGroup"
+        android:text="모임만들기"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
