@@ -237,7 +237,9 @@ public class SetGroupActivity extends ActionBarActivity {
 					// 연결되었음 코드가 리턴되면.
 
 					//id = ID.getText().toString();
-					resultText3 ="id="+pref.getString("id1","");
+					//////////////////////////////////////////////////////////
+					resultText3 ="id="+pref.getString("id","");
+					///////////////////////////////////////////////////////////
 					resultText = resultText1 + resultText2 +resultText3;
 					Log.e("tag111", resultText);
 					

@@ -11,6 +11,7 @@ import java.net.URL;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -161,6 +162,8 @@ public class LoginActivity extends ActionBarActivity {
 				Toast.makeText(context, "ID 또는 PW가 틀립니다.", Toast.LENGTH_SHORT)
 						.show();
 			} else {
+				//로그인 완료 후 화면 전환 전 sharedPreferences에 아이디 저장
+				savePreferences(id);
 				// login 완료 되면 FragmentBaseActivity로 화면 전환
 				Intent intent = new Intent(context, FragmentBaseActivity.class);
 				startActivity(intent);
@@ -173,5 +176,12 @@ public class LoginActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 
+	 // sharedPreference이용해서 값 저장하기
+    private void savePreferences(String id){
+        SharedPreferences idStorage = getSharedPreferences("idStorage", MODE_PRIVATE);
+        SharedPreferences.Editor editor = idStorage.edit();
+        editor.putString("id", id);
+        editor.commit();
+    }
 
 }
