@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.commentlistview.CommentItem;
 import com.example.commentlistview.CommentListAdapter;
@@ -41,7 +42,7 @@ public class GroupSelectedActivity extends Activity {
 	}
 	
 	public void joinBtn(View v){
-		
+		Toast.makeText(getApplicationContext(), "가입되었습니다.", 1500).show();
 	}
 
 	@Override
