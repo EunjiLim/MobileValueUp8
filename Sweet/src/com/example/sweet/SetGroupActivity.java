@@ -221,7 +221,7 @@ public class SetGroupActivity extends ActionBarActivity {
 		protected String doInBackground(String... params) {
 
 			try {
-				SharedPreferences pref = getSharedPreferences("prefdb",MODE_PRIVATE);
+				SharedPreferences pref = getSharedPreferences("idStorage",MODE_PRIVATE);
 				
 				URL myUrl = new URL("http://52.69.67.4/table.php");
 				HttpURLConnection http = (HttpURLConnection) myUrl

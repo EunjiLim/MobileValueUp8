@@ -98,4 +98,18 @@ public class JSONParser {
         // return JSON String
         return jObj;
     }
+    
+    public JSONObject getJSONObject(String str){
+    	json = "{\"board\":" + str + "}";
+    	try {
+			jObj = new JSONObject(json);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			Log.e("JSON Parser", "Error parsing data " + e.toString());
+			e.printStackTrace();
+		}
+  
+    	return jObj;
+    	
+    }
 }
