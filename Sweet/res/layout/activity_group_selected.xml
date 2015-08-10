@@ -86,48 +86,68 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:text="상세설명" />
-
-    <TextView
+    
+    <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#33000000"
-        android:text="댓글"
-        android:paddingLeft="10dp" />
-
+        android:orientation="horizontal"
+        >
+	    <TextView
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:background="#33000000"
+	        android:text="댓글"
+	        android:paddingLeft="10dp"
+	        android:padding="3dp"
+	        android:layout_weight="1" />
+	    
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_weight="3"
+            android:text="가입하기"
+            android:onClick="joinBtn"
+            android:background="#ff000000"
+            android:textColor="#FFFFFF"  />
+	        
+    </LinearLayout>
+    
     <ListView
         android:id="@+id/ListView_comment"
         android:layout_width="match_parent"
         android:layout_height="181dp"
         android:layout_weight="6.64" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:background="#33000000" >
 
-        <Button
+        <EditText
+            android:id="@+id/EditText_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="가입하기"
-            android:onClick="joinBtn"
-            android:background="#01DFD7"
-            android:textColor="#FFFFFF"  />
-        
-        <View 
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
             android:background="#FFFFFF"
-            />
+            android:padding="5dp"
+            android:textSize="14dp"
+            android:ems="10"
+            android:hint="댓글 쓰기"
+            android:layout_margin="5dp"
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="취소"
-            android:onClick="finishBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignRight="@+id/EditText_comment"
+            android:layout_centerVertical="true"
             android:background="#01DFD7"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
+            android:onClick="setCommentBtn"
+            android:textColor="#FFFFFF"
+            android:layout_marginRight="5dp" />
+
+    </RelativeLayout>
 
 </LinearLayout>

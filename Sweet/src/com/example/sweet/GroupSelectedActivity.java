@@ -6,24 +6,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.commentlistview.CommentItem;
 import com.example.commentlistview.CommentListAdapter;
-import com.example.listview.IconTextItem;
 
 public class GroupSelectedActivity extends Activity {
 
 	ListView commentList;
 	CommentListAdapter adapter;
+	EditText comment;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_group_selected);
 		
+		comment = (EditText) findViewById(R.id.EditText_comment);
 		commentList = (ListView) findViewById(R.id.ListView_comment);
 		adapter = new CommentListAdapter(this);
 		Resources res = getResources();
@@ -37,8 +38,8 @@ public class GroupSelectedActivity extends Activity {
 		commentList.setAdapter(adapter);
 	}
 	
-	public void finishBtn(View v){
-		finish();
+	public void setCommentBtn(View v){
+		Toast.makeText(getApplicationContext(), comment.getText().toString(), Toast.LENGTH_SHORT).show();;
 	}
 	
 	public void joinBtn(View v){

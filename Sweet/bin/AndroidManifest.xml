@@ -77,7 +77,8 @@
 	</activity>
 	<activity
             android:name=".GroupSelectedActivity"
-            android:label="@string/title_activity_group_selected" >
+            android:label="@string/title_activity_group_selected"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".SetSpecificActivity"
