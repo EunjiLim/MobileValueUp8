@@ -47,12 +47,13 @@ public class AccompanyTab extends Fragment{
 	// JSON Node Names
 	private static final String TAG_OS = "board";
 
+	private static final String TAG_NO ="NO";
 	private static final String TAG_ID = "ID";
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_LOCATION = "location";
 	private static final String TAG_DATE = "date";
 	private static final String TAG_PEOPLE = "people";
-
+	private static final String TAG_CURRENT = "current";
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -123,11 +124,13 @@ public class AccompanyTab extends Fragment{
 					JSONObject c = boardArray.getJSONObject(i);
 
 					// Storing JSON item in a Variable
+					String no = c.getString(TAG_NO);
 					String id = c.getString(TAG_ID);
 					String title = c.getString(TAG_TITLE);
 					String location = c.getString(TAG_LOCATION);
 					String date = c.getString(TAG_DATE);
 					String people = c.getString(TAG_PEOPLE);
+					String current = c.getString(TAG_CURRENT);
 					// Adding value HashMap key => value
 
 					/*
@@ -151,8 +154,8 @@ public class AccompanyTab extends Fragment{
 
 					Log.i("TAG", "*");
 					adapter.addItem(new IconTextItem(res
-							.getDrawable(R.drawable.with_coloricon), title, "1",
-							location, date, people));
+							.getDrawable(R.drawable.with_coloricon), title, current,
+							location, date, people, no));
 					listView1.setAdapter(adapter);
 					Log.i("TAG", "(");
 				}

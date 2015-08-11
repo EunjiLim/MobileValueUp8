@@ -83,8 +83,8 @@ public class SignUpActivity extends Activity {
 							isValidEmail(ID.getText().toString())
 									+ "ID 중복 확인을 해주세요.", 1).show();
 				} else if (isValidEmail(ID.getText().toString())) {
-					// 이메일 형식 체크
-					Toast.makeText(context, "올바른 이메일 형식이 아닙니다.", 1).show();
+					// 아아디 형식 체크
+					Toast.makeText(context, "올바른 아이디 형식이 아닙니다.", 1).show();
 				} else if (!(PW.getText().toString().equals(PW2.getText()
 						.toString()))) {
 					// 패스워드 확인
@@ -113,7 +113,7 @@ public class SignUpActivity extends Activity {
 	// 이메일 형식 검사
 	public boolean isValidEmail(String email) {
 		boolean err = false;
-		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		String regex = "^[a-z][a-z0-9]{3,16}$";
 
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(email);

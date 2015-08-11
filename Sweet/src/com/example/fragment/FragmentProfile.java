@@ -28,7 +28,7 @@ public class FragmentProfile extends Fragment{
         groupMade = (ListView) v
 				.findViewById(R.id.ListView_groupMade);
         madeAdapter = new IconTextListAdapter(getActivity());
-        madeAdapter.addItem(new IconTextItem( getResources().getDrawable(R.drawable.house_coloricon), "1", "1", "2", "1", "1"));
+        madeAdapter.addItem(new IconTextItem( getResources().getDrawable(R.drawable.house_coloricon), "1", "1", "2", "1", "1","0"));
 		groupMade.setAdapter(madeAdapter);
 		
 		
@@ -36,7 +36,7 @@ public class FragmentProfile extends Fragment{
 		groupJoined = (ListView) v
 				.findViewById(R.id.ListView_groupJoined);
 		joinedAdapter = new IconTextListAdapter(getActivity());
-		joinedAdapter.addItem(new IconTextItem( getResources().getDrawable(R.drawable.eat_coloricon), "1", "1", "2", "1", "1"));
+		joinedAdapter.addItem(new IconTextItem( getResources().getDrawable(R.drawable.eat_coloricon), "1", "1", "2", "1", "1","1"));
 		groupJoined.setAdapter(joinedAdapter);
         
         return v;

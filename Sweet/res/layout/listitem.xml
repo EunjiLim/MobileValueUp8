@@ -11,9 +11,15 @@
         android:layout_height="wrap_content" >
 
         <TextView
+            android:id="@+id/TextView_listNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
             android:id="@+id/TextView_listRegion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/TextView_listNo"
             android:paddingRight="10dp" />
 
         <ImageView
@@ -36,13 +42,30 @@
             android:textSize="16dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/TextView_listNumberOfMember"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/TextView_listTitle"
             android:gravity="right"
-            android:paddingRight="20dp" />
+            android:paddingRight="20dp" 
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TextView_listNumberOfMember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/" />
+            
+            <TextView
+                android:id="@+id/TextView_listFixedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+        </LinearLayout>
 
         <View
             android:id="@+id/View_listline1"
@@ -63,19 +86,12 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/TextView_listFixedNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/TextView_listDate"
-                android:textStyle="bold" />
-
             <ImageView
                 android:id="@+id/mint_arrow"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/mint_arrowbutton" />
         </RelativeLayout>
     </RelativeLayout>

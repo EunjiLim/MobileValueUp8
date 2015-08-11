@@ -8,7 +8,6 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,6 +60,7 @@ public class SearchActivity extends ActionBarActivity {
 
 	// JSON Node Names
 	private static final String TAG_OS = "board";
+	private static final String TAG_NO = "NO";
 	private static final String TAG_ID = "ID";
 	private static final String TAG_CATEGORY = "category";
 	private static final String TAG_TITLE = "title";
@@ -218,6 +218,7 @@ public class SearchActivity extends ActionBarActivity {
 					JSONObject c = boardArray.getJSONObject(i);
 
 					// Storing JSON item in a Variable
+					String no = c.getString(TAG_NO);
 					String id = c.getString(TAG_ID);
 					String category = c.getString(TAG_CATEGORY);
 					String title = c.getString(TAG_TITLE);
@@ -233,22 +234,22 @@ public class SearchActivity extends ActionBarActivity {
 					if (category.equals("숙박")) {
 						adapter.addItem(new IconTextItem(res
 								.getDrawable(R.drawable.house_coloricon),
-								title, current, location, date, people));
+								title, current, location, date, people, no));
 						listview.setAdapter(adapter);
 					} else if (category.equals("레저")) {
 						adapter.addItem(new IconTextItem(res
 								.getDrawable(R.drawable.leisure_coloricon),
-								title, current, location, date, people));
+								title, current, location, date, people, no));
 						listview.setAdapter(adapter);
 					} else if (category.equals("식사")) {
 						adapter.addItem(new IconTextItem(res
 								.getDrawable(R.drawable.eat_coloricon), title,
-								current, location, date, people));
+								current, location, date, people, no));
 						listview.setAdapter(adapter);
 					} else {
 						adapter.addItem(new IconTextItem(res
 								.getDrawable(R.drawable.with_coloricon), title,
-								current, location, date, people));
+								current, location, date, people, no));
 						listview.setAdapter(adapter);
 					}
 

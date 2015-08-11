@@ -40,6 +40,10 @@ public class IconTextView extends LinearLayout{
 	 * TextView fixed number
 	 */
 	private TextView mText_fixedNumber;
+	/**
+	 * TextView list No.
+	 */
+	private TextView mText_listNo;
 	
 	public IconTextView(Context mContext, IconTextItem aItem) {
 		super(mContext);
@@ -71,6 +75,10 @@ public class IconTextView extends LinearLayout{
 		// Set Text fixed number
 		mText_fixedNumber = (TextView) findViewById(R.id.TextView_listFixedNumber);
 		mText_fixedNumber.setText(aItem.getData(4));
+		
+		// Set Text No.
+		mText_listNo = (TextView) findViewById(R.id.TextView_listNo);
+		mText_listNo.setText(aItem.getData(5));
 	}
 	
 	/**
@@ -90,7 +98,9 @@ public class IconTextView extends LinearLayout{
 			mText_date.setText(data);
 		} else if (index == 4) {
 			mText_fixedNumber.setText(data);
-		} else {
+		} else if (index == 5) {
+			mText_listNo.setText(data);
+		}else{
 			throw new IllegalArgumentException();
 		}
 	}

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/View_signUp1"
             android:background="@drawable/round_corner"
-            android:hint="이메일"
+            android:hint="아이디 (영소문자, 숫자만 가능, 3~16자)"
             android:padding="10dp" />
 
         <View

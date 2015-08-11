@@ -15,6 +15,7 @@ import com.example.commentlistview.CommentListAdapter;
 
 public class GroupSelectedActivity extends Activity {
 
+	
 	ListView commentList;
 	CommentListAdapter adapter;
 	EditText comment;

@@ -5,113 +5,238 @@
     android:orientation="vertical"
     tools:context="com.example.sweet.GroupSelectedActivity" >
 
-        <LinearLayout 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="20dp"
-        >
-        
+        android:orientation="horizontal" >
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/ImageView_profileGroupSelected"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/profile_icon"
-                android:layout_margin="20dp" />
-
+                android:layout_margin="20dp"
+                android:src="@drawable/profile_icon" />
         </RelativeLayout>
-        
-        <LinearLayout 
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
+            <RelativeLayout
+                android:id="@+id/RelativeLayout_selectedGroupNameAndSex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="이름(성별)"/>
-            
-            <View 
-                android:layout_width="120dp"
+                android:paddingTop="30dp" >
+
+                <TextView
+                    android:id="@+id/TextView_selectedGroupnameAndSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="15dp"
+                    android:text="이름(성별)"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/TextView_selectedGroupnameAndSexResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/TextView_selectedGroupnameAndSex"
+                    android:text="temp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="200dp"
                 android:layout_height="1dp"
-                android:background="#ff000000"
-                />
+                android:background="#ff000000" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="생년월일"
-                android:textSize="12dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp" />
-            
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="아이디" 
-                android:textSize="12dp"
-                android:layout_marginBottom="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="연락처"
-                android:textSize="12dp"
-                android:layout_marginBottom="5dp" />
-            
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_selectedGroupList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_selectedGroupBirthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생년월일"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/TextView_selectedGroupKakaoID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TextView_selectedGroupBirthday"
+                        android:paddingTop="3dp"
+                        android:text="카카오톡아이디"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/TextView_selectedGroupPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TextView_selectedGroupKakaoID"
+                        android:paddingTop="3dp"
+                        android:text="연락처"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_selectedGroupprivateProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp" >
+
+                    <TextView
+                        android:id="@+id/TextView_selectedGroupBirthdayResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="temp"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/TextView_selectedGroupKakaoIDResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TextView_selectedGroupBirthdayResult"
+                        android:text="temp"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/TextView_selectedGroupPhoneResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TextView_selectedGroupKakaoIDResult"
+                        android:text="temp"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-        
-        
     </LinearLayout>
-    
-            
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp" 
-        android:background="#ff000000"
-        />
+        android:layout_height="1dp"
+        android:background="#ff000000" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:text="상세설명" />
-    
-    <LinearLayout 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/TextView_groupSelectedLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="지역" />
+
+            <TextView
+                android:id="@+id/TextView_groupSelectedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜" />
+
+            <TextView
+                android:id="@+id/TextView_groupSelectedFixedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="정원" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp" >
+
+            <TextView
+                android:id="@+id/TextView_groupSelectedLocationResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="temp" />
+
+            <TextView
+                android:id="@+id/TextView_groupSelectedDateResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="temp" />
+
+            <TextView
+                android:id="@+id/TextView_groupSelectedFixedNumberResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="temp" />
+        </LinearLayout>
+    </LinearLayout>
+
+	<TextView 
+	    android:id="@+id/TextView_groupSeletedContent"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" />
+	"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
-	    <TextView
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	    	android:background="#33000000"
-	        android:text="댓글"
-	        android:paddingLeft="10dp"
-	        android:padding="3dp"
-	        android:layout_weight="1" />
-	    
+        android:paddingTop="20dp" >
+
         <Button
+            android:id="@+id/Button_groupSelected1"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_weight="3"
-            android:text="가입하기"
-            android:onClick="joinBtn"
+            android:layout_height="50dp"
+            android:layout_weight="1"
             android:background="#ff000000"
-            android:textColor="#FFFFFF"  />
-	        
+            android:onClick="joinBtn"
+            android:text="가입하기"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/Button_groupSelected2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#FF8585"
+            android:text="가입자 정보"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#33000000"
+            android:padding="3dp"
+            android:paddingLeft="10dp"
+            android:text="댓글" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/ListView_comment"
         android:layout_width="match_parent"
@@ -129,25 +254,24 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:layout_margin="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:background="#FFFFFF"
-            android:padding="5dp"
-            android:textSize="14dp"
             android:ems="10"
             android:hint="댓글 쓰기"
-            android:layout_margin="5dp"
-            android:layout_weight="1"/>
+            android:padding="5dp"
+            android:textSize="14dp" />
 
         <Button
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignRight="@+id/EditText_comment"
             android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
             android:background="#01DFD7"
             android:onClick="setCommentBtn"
-            android:textColor="#FFFFFF"
-            android:layout_marginRight="5dp" />
-
+            android:textColor="#FFFFFF" />
     </RelativeLayout>
 
 </LinearLayout>

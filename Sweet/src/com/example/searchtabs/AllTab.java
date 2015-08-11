@@ -29,13 +29,10 @@ import com.example.listview.IconTextListAdapter;
 import com.example.sweet.GroupSelectedActivity;
 import com.example.sweet.R;
 
-public class AllTab extends Fragment{
-	
+public class AllTab extends Fragment {
+
 	ListView listView1;
 	IconTextListAdapter adapter;
-	
-	// 데이터를 읽어올 때 사용할 변수
-	ArrayList<HashMap<String, String>> boardlist = new ArrayList<HashMap<String, String>>();
 
 	// 상세검색 버튼
 	Button descriptionButton;
@@ -48,31 +45,31 @@ public class AllTab extends Fragment{
 	// JSON Node Names
 	private static final String TAG_OS = "board";
 
+	private static final String TAG_NO = "NO";
 	private static final String TAG_ID = "ID";
 	private static final String TAG_CATEGORY = "category";
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_LOCATION = "location";
 	private static final String TAG_DATE = "date";
 	private static final String TAG_PEOPLE = "people";
+	private static final String TAG_CURRENT = "current";
 
-	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_all, container, false);
-        
-        listView1 = (ListView) v.findViewById(R.id.listView_allFragment);
-        adapter = new IconTextListAdapter(getActivity());
-        
-        //리스트뷰에 어댑더 설정
-        listView1.setAdapter(adapter);
-        
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.tab_all, container, false);
+
+		listView1 = (ListView) v.findViewById(R.id.listView_allFragment);
+		adapter = new IconTextListAdapter(getActivity());
+
+		// 리스트뷰에 어댑더 설정
+		listView1.setAdapter(adapter);
 
 		new JSONParse().execute();
-        
-        return v;
-    }
-	
+
+		return v;
+	}
+
 	private class JSONParse extends AsyncTask<String, String, JSONObject> {
 		private ProgressDialog pDialog;
 
@@ -113,12 +110,14 @@ public class AllTab extends Fragment{
 					JSONObject c = boardArray.getJSONObject(i);
 
 					// Storing JSON item in a Variable
+					String no = c.getString(TAG_NO);
 					String id = c.getString(TAG_ID);
 					String category = c.getString(TAG_CATEGORY);
 					String title = c.getString(TAG_TITLE);
 					String location = c.getString(TAG_LOCATION);
 					String date = c.getString(TAG_DATE);
 					String people = c.getString(TAG_PEOPLE);
+					String current = c.getString(TAG_CURRENT);
 					// Adding value HashMap key => value
 
 					/*
@@ -141,26 +140,26 @@ public class AllTab extends Fragment{
 					Resources res = getResources();
 
 					Log.i("TAG", "*");
-					//카테고리별 게시판 아이콘 적용
+					// 카테고리별 게시판 아이콘 적용
 					if (category.equals("숙박")) {
 						adapter.addItem(new IconTextItem(res
-								.getDrawable(R.drawable.house_coloricon), title,
-								"1", location, date, people));
+								.getDrawable(R.drawable.house_coloricon),
+								title, current, location, date, people, no));
 						listView1.setAdapter(adapter);
-					}else if(category.equals("레저")){
+					} else if (category.equals("레저")) {
 						adapter.addItem(new IconTextItem(res
-								.getDrawable(R.drawable.leisure_coloricon), title,
-								"1", location, date, people));
+								.getDrawable(R.drawable.leisure_coloricon),
+								title, current, location, date, people, no));
 						listView1.setAdapter(adapter);
-					}else if(category.equals("식사")){
+					} else if (category.equals("식사")) {
 						adapter.addItem(new IconTextItem(res
 								.getDrawable(R.drawable.eat_coloricon), title,
-								"1", location, date, people));
+								current, location, date, people, no));
 						listView1.setAdapter(adapter);
-					}else {
+					} else {
 						adapter.addItem(new IconTextItem(res
 								.getDrawable(R.drawable.with_coloricon), title,
-								"1", location, date, people));
+								current, location, date, people, no));
 						listView1.setAdapter(adapter);
 					}
 					Log.i("TAG", "(");
@@ -171,29 +170,43 @@ public class AllTab extends Fragment{
 
 		}
 	}
-    
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-        super.onViewCreated(view, savedInstanceState);
 
-		//리스트 뷰 항목 클릭했을 때
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onViewCreated(view, savedInstanceState);
+
+		// 리스트 뷰 항목 클릭했을 때
 		listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-					Intent intent = new Intent(getActivity(), GroupSelectedActivity.class);
-					startActivity(intent);
+
+				// 클릭된 리스트 정보를 새로운 IconTextItem에 저장
+				IconTextItem item = (IconTextItem) adapter.getItem(position);
+				String[] data = item.getData();
+				/*******************************
+				 * 게시판 번호가 IconTextItem의 item에서 6번째로 저장되어 있음을 toast로 확인할 수 있다.
+				 */
+				// Toast.makeText(getActivity(), data[5],
+				// Toast.LENGTH_SHORT).show();
+
+				Intent intent = new Intent(getActivity(), GroupSelectedActivity.class);
+				
+				//인텐트에 list No. 정보를 넣어서 전달한다.
+				intent.putExtra("listNo", data[5]);
+				startActivity(intent);
 
 			}
 		});
-		
-    }
-    
-    public void setData(String title, String description, String location, String date, int people){
-    	Toast.makeText(getActivity().getApplicationContext(), ""+title+people, Toast.LENGTH_SHORT).show();
-    }
 
+	}
+
+	public void setData(String title, String description, String location,
+			String date, int people) {
+		Toast.makeText(getActivity().getApplicationContext(),
+				"" + title + people, Toast.LENGTH_SHORT).show();
+	}
 
 }
