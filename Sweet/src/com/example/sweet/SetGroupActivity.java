@@ -77,6 +77,9 @@ public class SetGroupActivity extends ActionBarActivity {
 	double markerLat;
 	double markerLon;
 	
+	//라디오 버튼
+	String radioChecked =null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -142,22 +145,26 @@ public class SetGroupActivity extends ActionBarActivity {
 		radio_accompany = (RadioButton) findViewById(R.id.RadioButton_accompany);
 		radio_accommodation.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				checkChecked(v);
+				radioChecked = "숙박";
+				checkChecked();
 			}
 		});
 		radio_meal.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				checkChecked(v);
+				radioChecked = "식사";
+				checkChecked();
 			}
 		});
 		radio_leisure.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				checkChecked(v);
+				radioChecked = "레저";
+				checkChecked();
 			}
 		});
 		radio_accompany.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				checkChecked(v);
+				radioChecked = "동행";
+				checkChecked();
 			}
 		});
 	}
@@ -186,15 +193,17 @@ public class SetGroupActivity extends ActionBarActivity {
 
 	}
 	
-	public void checkChecked(View v){
-		RadioButton rb = (RadioButton) v;
-		if(rb.isChecked()) {
-			resultText1 = "category=" + rb.getText().toString() + "&";
-
+	public void checkChecked(){
+		if(radioChecked!=null) {
+			resultText1 = "category=" + radioChecked + "&";
+			Log.d("Main", radioChecked);
 		}
 	}
 
 	public void onClickedSetGroup(View v) {
+		
+		String lat = Double.toString(markerLat);
+		String lon = Double.toString(markerLon);
 
 		// 값 받아오기
 		resultText2 = "title=" + title.getText().toString() + "&"
