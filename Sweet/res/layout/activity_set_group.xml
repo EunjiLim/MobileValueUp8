@@ -13,6 +13,7 @@
         android:text="카테고리"
         android:textColor="#FFFFFF"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
         android:textSize="12dp" />
 
     <RadioGroup
@@ -43,7 +44,7 @@
             android:layout_weight="1"
             android:background="@drawable/meal_check"
             android:button="@android:color/transparent"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="34dp"/>
 
         <RadioButton
             android:id="@+id/RadioButton_leisure"
@@ -52,7 +53,7 @@
             android:layout_weight="1"
             android:background="@drawable/leisure_check"
             android:button="@android:color/transparent"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="34dp" />
 
         <RadioButton
             android:id="@+id/RadioButton_accompany"
@@ -61,7 +62,7 @@
             android:background="@drawable/accompany_check"
             android:button="@android:color/transparent"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="34dp"
             android:layout_marginRight="25dp" />
     </RadioGroup>
 
@@ -71,11 +72,10 @@
         android:layout_height="1dp"
         android:background="#ffffff"/>
 
-    <EditText
+    <com.examle.customview.CustomEditText
         android:id="@+id/EditText_title"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@drawable/text_box"
         android:hint="모임 이름을 적어주세요."
         android:padding="10dp"
         android:layout_marginLeft="16dp"
@@ -96,11 +96,10 @@
         android:layout_marginBottom="10dp"
         >
         
-	    <EditText
+	    <com.examle.customview.CustomEditText
 	        android:id="@+id/EditText_description"
 	        android:layout_width="match_parent"
 	        android:layout_height="130dp"
-	        android:background="@drawable/text_largebox"
 	        android:hint="상세설명"
 	        android:padding="10dp"
 	        android:textSize="12dp" />
@@ -122,15 +121,22 @@
         android:layout_height="1dp"
         android:background="#ffffffff" />
 
-    <RelativeLayout
+    <com.examle.customview.CustomBox
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/area_box"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         >
+	     
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지역"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
 
 	    <Spinner
 	        android:id="@+id/Spinner_region"
@@ -145,15 +151,15 @@
 
 	    <Button
 	        android:id="@+id/Button_areaSelect"
-	        android:layout_width="30dp"
-	        android:layout_height="30dp"
+	        android:layout_width="34dp"
+	        android:layout_height="37dp"
 	        android:layout_alignParentRight="true"
 	        android:layout_alignTop="@+id/Spinner_region"
 	        android:layout_margin="5dp"
 	        android:background="@drawable/area_icon"
 	        android:onClick="specificBtn" />
         
-    </RelativeLayout>
+    </com.examle.customview.CustomBox>
     
     
     <View
@@ -162,15 +168,22 @@
         android:layout_height="1dp"
         android:background="#FFFFFF" />
     
-    <RelativeLayout
+    <com.examle.customview.CustomBox
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/date_box"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         >
+	    
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
 
 
 	    <EditText
@@ -192,7 +205,7 @@
 	        />
 
         
-    </RelativeLayout>
+    </com.examle.customview.CustomBox>
 
     <View
         android:id="@+id/View_forLine5"
@@ -200,15 +213,22 @@
         android:layout_height="1dp"
         android:background="#FFFFFF" />
 
-    <RelativeLayout
+    <com.examle.customview.CustomBox
         android:id="@+id/secondRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/persons_box"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="12dp" >
+	    
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정원"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
 
         <EditText
             android:id="@+id/EditText_fixedNumber"
@@ -219,12 +239,13 @@
         
         <ImageView
             android:id="@+id/ImageView_fixedNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
+	        android:layout_margin="5dp"
             android:src="@drawable/persons_icon"
             />
-    </RelativeLayout>
+    </com.examle.customview.CustomBox>
 
     <Button
         android:layout_width="200dp"

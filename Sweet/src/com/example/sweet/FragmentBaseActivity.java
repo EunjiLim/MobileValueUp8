@@ -56,10 +56,10 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 		
 		//탭에 아이콘 넣기
 
-		HomeTab.setIcon(R.drawable.home_button);
-		SearchTab.setIcon(R.drawable.search_button);
-		ProfileTab.setIcon(R.drawable.mypage_button);
-		SettingTab.setIcon(R.drawable.set_button);
+		HomeTab.setIcon(R.drawable.home_checkbutton);
+		SearchTab.setIcon(R.drawable.search_checkbutton);
+		ProfileTab.setIcon(R.drawable.mypage_checkbutton);
+		SettingTab.setIcon(R.drawable.set_checkbutton);
 
 
 		getSupportActionBar().addTab(HomeTab);

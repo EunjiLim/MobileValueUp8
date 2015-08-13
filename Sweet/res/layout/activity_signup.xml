@@ -3,31 +3,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="661dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/background"
-        android:padding="10dp" >
+        android:padding="10dp"
+        android:orientation="vertical" >
 
         <View
             android:id="@+id/View_signUp1"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
-
-        <EditText
-            android:id="@+id/EditText_id"
+        
+        <RelativeLayout 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/View_signUp1"
-            android:background="@drawable/round_corner"
-            android:hint="아이디 (영소문자, 숫자만 가능, 3~16자)"
-            android:padding="10dp" />
+            >
+
+	        <EditText
+	            android:id="@+id/EditText_id"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/round_corner"
+	            android:hint="아이디 (3~16자)"
+	            android:padding="10dp"
+	            android:textSize="12dp"
+	            android:layout_weight="1" />
+
+	        <Button
+	            android:id="@+id/Button_duplicationCheck"
+	            android:layout_width="wrap_content"
+	            android:layout_height="37dp"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentTop="true"
+	            android:layout_weight="5"
+	            android:background="@drawable/roundcorner_signup"
+	            android:text="@string/check_idDuplication"
+	            android:textColor="#FFFFFF"
+	            android:textSize="12dp"
+	            android:textStyle="bold" />
+            
+        </RelativeLayout>
 
         <View
             android:id="@+id/View_signUp2"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_below="@id/EditText_id" />
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/EditText_password"
@@ -37,7 +58,8 @@
             android:background="@drawable/round_corner"
             android:hint="비밀번호"
             android:inputType="textPassword"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="12dp" />
 
         <View
             android:id="@+id/View_signUp2_2"
@@ -53,7 +75,8 @@
             android:background="@drawable/round_corner"
             android:hint="비밀번호 확인"
             android:inputType="textPassword"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="12dp" />
 
         <View
             android:id="@+id/View_signUp3"
@@ -68,7 +91,8 @@
             android:layout_below="@id/View_signUp3"
             android:background="@drawable/round_corner"
             android:hint="이름"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="12dp" />
 
         <View
             android:id="@+id/View_signUp4"
@@ -83,7 +107,8 @@
             android:layout_below="@id/View_signUp4"
             android:background="@drawable/round_corner"
             android:hint="생년월일  ex)920803"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="12dp" />
 
         <View
             android:id="@+id/View_signUp5"
@@ -104,13 +129,15 @@
                 android:id="@+id/RadioButton_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="남자" />
+                android:text="남자"
+           		android:textSize="12dp" />
             
             <RadioButton
                 android:id="@+id/RadioButton_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여자" />
+                android:text="여자"
+            	android:textSize="12dp" />
             
             
         </RadioGroup>
@@ -128,7 +155,8 @@
             android:layout_below="@id/View_signUp6"
             android:background="@drawable/round_corner"
             android:hint="휴대폰 번호"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="12dp" />
 
         <View
             android:id="@+id/View_signUp7"
@@ -143,7 +171,8 @@
             android:layout_below="@id/View_signUp7"
             android:background="@drawable/round_corner"
             android:hint="카카오톡 아이디"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="12dp" />
 
         <View
             android:id="@+id/View_signUp8"
@@ -159,18 +188,10 @@
             android:background="@drawable/roundcorner_signup"
             android:text="회원가입"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/Button_duplicationCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/EditText_id"
-            android:layout_alignRight="@+id/EditText_id"
-            android:background="@drawable/roundcorner_signup"
-            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:text="@string/check_idDuplication"></Button>
-    </RelativeLayout>
+            android:textSize="12dp" />
+
+
+    </LinearLayout>
 
 </ScrollView>

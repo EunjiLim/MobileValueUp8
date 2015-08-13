@@ -15,12 +15,10 @@
         <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
         <item name="android:background">@drawable/action_bar</item>
         <item name="android:alpha">0.6</item>
-        <item name="android:actionBarTabStyle">@style/MyActionBarTabs</item>
 
         <!-- Support library compatibility -->
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
         <item name="background">@drawable/action_bar</item>
-        <item name="actionBarTabStyle">@style/MyActionBarTabs</item>
     </style>
 
     <!-- ActionBar title text -->
@@ -32,14 +30,5 @@
         <item name="android:padding">100dp</item>
         <!-- The textColor property is backward compatible with the Support Library -->
     </style>
-    
-    <!-- ActionBar tabs styles -->
-    <style name="MyActionBarTabs"
-           parent="@style/Widget.AppCompat.ActionBar.TabView">
-        <!-- tab indicator -->
-        <item name="android:background">@drawable/large_actionbar</item>
 
-        <!-- Support library compatibility -->
-        <item name="background">@drawable/large_actionbar</item>
-    </style>
 </resources>
