@@ -43,13 +43,40 @@
                     android:text="이름(성별)"
                     android:textSize="20dp"
                     android:textStyle="bold" />
-
+                
                 <TextView
-                    android:id="@+id/TextView_nameAndSexResult"
+                    android:id="@+id/TextView_nameResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/TextView_nameAndSex"
                     android:text="temp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                
+                <TextView
+                    android:id="@+id/Parenthesis1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/TextView_nameResult"
+                    android:text="("
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/TextView_SexResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/Parenthesis1_1"
+                    android:text="temp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                
+                <TextView
+                    android:id="@+id/Parenthesis2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/TextView_SexResult"
+                    android:text=")"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </RelativeLayout>

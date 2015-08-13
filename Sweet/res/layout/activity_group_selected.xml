@@ -45,11 +45,38 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/TextView_selectedGroupnameAndSexResult"
+                    android:id="@+id/TextView_selectedGroupNameResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/TextView_selectedGroupnameAndSex"
                     android:text="temp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                
+                <TextView
+                    android:id="@+id/Parenthesis1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/TextView_selectedGroupNameResult"
+                    android:text="("
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                
+                <TextView
+                    android:id="@+id/TextView_selectedGroupSexResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/Parenthesis1"
+                    android:text="temp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                
+                <TextView
+                    android:id="@+id/Parenthesis2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/TextView_selectedGroupSexResult"
+                    android:text=")"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -194,7 +221,6 @@
 	    android:id="@+id/TextView_groupSeletedContent"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content" />
-	"
 
     <LinearLayout
         android:layout_width="match_parent"
