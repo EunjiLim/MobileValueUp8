@@ -4,11 +4,11 @@
     <style name="CustomActionBarTheme2"
            parent="@style/Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/MyActionBar2</item>
-        <item name="android:actionBarTabStyle">@style/MyActionBarTabs</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Example</item>
 
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar2</item>
-        <item name="actionBarTabStyle">@style/MyActionBarTabs</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Example</item>
     </style>
 
     <!-- ActionBar styles -->
@@ -33,13 +33,8 @@
     </style>
 
     <!-- ActionBar tabs styles -->
-    <style name="MyActionBarTabs"
-           parent="@style/Widget.AppCompat.ActionBar.TabView">
-        <!-- tab indicator -->
-        <item name="android:background">#ff000000</item>
-
-        <!-- Support library compatibility -->
-        <item name="background">#ff000000</item>
+    <style name="ActionBarTabStyle.Example" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_example</item>
     </style>
 
 </resources>
