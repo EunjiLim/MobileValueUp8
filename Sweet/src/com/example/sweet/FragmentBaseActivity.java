@@ -79,7 +79,6 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 					getSupportActionBar().setTitle("Home");
 				else if(position == 1){
 					getSupportActionBar().setTitle("Search");
-					getSupportActionBar().setIcon(R.drawable.ic_favorite_border_white_24dp);
 				}
 				else if(position == 2)
 					getSupportActionBar().setTitle("³» Á¤º¸");

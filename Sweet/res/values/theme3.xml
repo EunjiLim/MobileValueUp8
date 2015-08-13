@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!-- the theme applied to the application or activity -->
+    <style name="CustomActionBarTheme3"
+           parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar3</item>
+
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/MyActionBar3</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar3"
+           parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText2</item>
+        <item name="android:background">@drawable/action_bar</item>
+
+        <!-- Support library compatibility -->
+        <item name="titleTextStyle">@style/MyActionBarTitleText2</item>
+        <item name="background">@drawable/action_bar</item>
+    </style>
+
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText3"
+           parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">100dp</item>
+        <!-- The textColor property is backward compatible with the Support Library -->
+    </style>
+</resources>

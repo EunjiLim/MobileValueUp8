@@ -707,6 +707,7 @@ int id TextView_selectedGroupPhone 0x7f0c0071
 int id TextView_selectedGroupPhoneResult 0x7f0c0075
 int id TextView_selectedGroupSexResult 0x7f0c006c
 int id TextView_selectedGroupnameAndSex 0x7f0c0069
+int id TextView_title 0x7f0c00f5
 int id View_forLine1 0x7f0c0096
 int id View_forLine2 0x7f0c0098
 int id View_forLine3 0x7f0c009b
@@ -740,8 +741,8 @@ int id action_menu_presenter 0x7f0c0003
 int id action_mode_bar 0x7f0c0054
 int id action_mode_bar_stub 0x7f0c0053
 int id action_mode_close_button 0x7f0c003c
-int id action_search 0x7f0c00f6
-int id action_settings 0x7f0c00f5
+int id action_search 0x7f0c00f7
+int id action_settings 0x7f0c00f6
 int id activity_chooser_view_content 0x7f0c003d
 int id adjust_height 0x7f0c0024
 int id adjust_width 0x7f0c0025
@@ -1162,12 +1163,15 @@ int style Base_Widget_AppCompat_Spinner_Underlined 0x7f08006e
 int style Base_Widget_AppCompat_TextView_SpinnerItem 0x7f08006f
 int style Base_Widget_AppCompat_Toolbar 0x7f0800a2
 int style Base_Widget_AppCompat_Toolbar_Button_Navigation 0x7f080070
-int style CustomActionBarTheme 0x7f08012f
+int style CustomActionBarTheme 0x7f080132
 int style CustomActionBarTheme2 0x7f08012b
-int style MyActionBar 0x7f080130
+int style CustomActionBarTheme3 0x7f08012f
+int style MyActionBar 0x7f080133
 int style MyActionBar2 0x7f08012c
-int style MyActionBarTitleText 0x7f080131
+int style MyActionBar3 0x7f080130
+int style MyActionBarTitleText 0x7f080134
 int style MyActionBarTitleText2 0x7f08012d
+int style MyActionBarTitleText3 0x7f080131
 int style Platform_AppCompat 0x7f080010
 int style Platform_AppCompat_Light 0x7f080011
 int style Platform_ThemeOverlay_AppCompat_Dark 0x7f080071

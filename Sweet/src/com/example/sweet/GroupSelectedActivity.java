@@ -9,7 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -19,9 +18,9 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,11 +31,8 @@ import android.widget.Toast;
 import com.example.commentlistview.CommentItem;
 import com.example.commentlistview.CommentListAdapter;
 import com.example.libriary.JSONParser;
-import com.example.listview.IconTextItem;
-import com.example.listview.IconTextListAdapter;
-import com.example.sweet.LoginActivity.logIn;
 
-public class GroupSelectedActivity extends Activity {
+public class GroupSelectedActivity extends ActionBarActivity{
 
 	EditText editComment;
 	Button commentRegister;
@@ -64,6 +60,7 @@ public class GroupSelectedActivity extends Activity {
 	ListView commentList;
 	CommentListAdapter adapter;
 	EditText comment;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -344,24 +341,6 @@ public class GroupSelectedActivity extends Activity {
 		sweetJoin.execute();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.group_selected, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 	
     public String getPreferences(){
         SharedPreferences pref = getSharedPreferences("idStorage", MODE_PRIVATE);
