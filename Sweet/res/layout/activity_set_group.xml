@@ -13,7 +13,7 @@
         android:text="카테고리"
         android:textColor="#FFFFFF"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:textSize="12dp" />
 
     <RadioGroup
@@ -30,7 +30,7 @@
         <RadioButton
             android:id="@+id/RadioButton_accommodation"
             android:layout_width="20dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:textColor="#FFFFFF"
             android:layout_weight="1"
             android:background="@drawable/accomodation_check"
@@ -40,7 +40,7 @@
         <RadioButton
             android:id="@+id/RadioButton_meal"
             android:layout_width="20dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@drawable/meal_check"
             android:button="@android:color/transparent"
@@ -49,7 +49,7 @@
         <RadioButton
             android:id="@+id/RadioButton_leisure"
             android:layout_width="20dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@drawable/leisure_check"
             android:button="@android:color/transparent"
@@ -58,7 +58,7 @@
         <RadioButton
             android:id="@+id/RadioButton_accompany"
             android:layout_width="20dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@drawable/accompany_check"
             android:button="@android:color/transparent"
             android:layout_weight="1"
@@ -131,6 +131,7 @@
         >
 	     
         <TextView 
+            android:id="@+id/TextView_setGroupRegion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="지역"
@@ -143,18 +144,28 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="30dp"
 	        android:layout_centerVertical="true"
-	        android:layout_marginRight="20dp"
-	        android:layout_centerHorizontal="true"
-	        android:layout_toLeftOf="@+id/Button_areaSelect"
+	        android:layout_toRightOf="@id/TextView_setGroupRegion"
+	        android:layout_toEndOf="@id/TextView_setGroupRegion"
 	        android:drawSelectorOnTop="true"
 	        android:prompt="@string/region_prompt" />
+	    
+	    <TextView
+	        android:id="@+id/TextView_pleaseClick"
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_centerVertical="true"
+	        android:paddingTop="4dp"
+	        android:layout_toRightOf="@id/Spinner_region"
+	        android:layout_toEndOf="@id/Spinner_region"
+	        android:textColor="#64C6C2"
+	        android:text="상세 지역을 설정해주세요.  >>"  />
 
 	    <Button
 	        android:id="@+id/Button_areaSelect"
-	        android:layout_width="34dp"
-	        android:layout_height="37dp"
+	        android:layout_width="30dp"
+	        android:layout_height="40dp"
 	        android:layout_alignParentRight="true"
-	        android:layout_alignTop="@+id/Spinner_region"
+	        android:layout_centerVertical="true"
 	        android:layout_margin="5dp"
 	        android:background="@drawable/area_icon"
 	        android:onClick="specificBtn" />
@@ -178,6 +189,7 @@
         >
 	    
         <TextView 
+            android:id="@+id/TextView_setGroupDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="날짜"
@@ -188,10 +200,12 @@
 
 	    <EditText
 	        android:id="@+id/EditText_selectedDate"
-	        android:layout_width="wrap_content"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_centerHorizontal="true"
 	        android:layout_centerVertical="true"
+	        android:layout_toRightOf="@id/TextView_setGroupDate"
+	        android:layout_toEndOf="@id/TextView_setGroupDate"
 	        android:background="@null"
 	        android:layout_margin="2dp"
 	        android:ems="10" />

@@ -105,10 +105,7 @@ public class LoginActivity extends ActionBarActivity {
 					pw = PW.getText().toString();
 
 					StringBuffer buffer = new StringBuffer();
-					buffer.append("id").append("=").append(id).append("&"); // php
-																			// 변수에
-																			// 값
-																			// 대입
+					buffer.append("id").append("=").append(id).append("&");
 					buffer.append("pw").append("=").append(pw);
 
 					OutputStreamWriter outStream = new OutputStreamWriter(

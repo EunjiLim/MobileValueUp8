@@ -40,18 +40,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*****************************
+ * 모임 만들기
+ * 
+ * 서버에 전송하는 값 : id, 카테고리, 제목, 상세내용, 지역, 날짜, 인원, 경도, 위도
+ * @author Eunji
+ *
+ */
 public class SetGroupActivity extends ActionBarActivity {
 	private table making;
 	private Context context;
 	
 	String line;
 	String temp;
-	
-	// 데이터베이스에 보낼 String
-	String resultText = "";
-	String resultText1 = "";
-	String resultText2 = "";
-	String resultText3 = "";
 
 	// 날짜 선택을 위한 변수들
 	private EditText dateEditText;
@@ -77,8 +78,9 @@ public class SetGroupActivity extends ActionBarActivity {
 	double markerLat;
 	double markerLon;
 	
-	//라디오 버튼
-	String radioChecked =null;
+	//서버에 넘길 String data 변수들
+	String id, mTitle, mContents, mLocation, mDate, mPeople, mLang, mLong;
+	String radioChecked=null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@ public class SetGroupActivity extends ActionBarActivity {
 
 		context = this;
 
+		//액션바 타이틀 설정
 		getSupportActionBar().setTitle("모임 만들기");
 
 		// 제목, 내용, 정원
@@ -143,28 +146,25 @@ public class SetGroupActivity extends ActionBarActivity {
 		radio_meal = (RadioButton) findViewById(R.id.RadioButton_meal);
 		radio_leisure = (RadioButton) findViewById(R.id.RadioButton_leisure);
 		radio_accompany = (RadioButton) findViewById(R.id.RadioButton_accompany);
+		
 		radio_accommodation.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				radioChecked = "숙박";
-				checkChecked();
 			}
 		});
 		radio_meal.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				radioChecked = "식사";
-				checkChecked();
 			}
 		});
 		radio_leisure.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				radioChecked = "레저";
-				checkChecked();
 			}
 		});
 		radio_accompany.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				radioChecked = "동행";
-				checkChecked();
 			}
 		});
 	}
@@ -191,31 +191,30 @@ public class SetGroupActivity extends ActionBarActivity {
 		}, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
 				newCalendar.get(Calendar.DAY_OF_MONTH));
 
-	}
-	
-	public void checkChecked(){
-		if(radioChecked!=null) {
-			resultText1 = "category=" + radioChecked + "&";
-			Log.d("Main", radioChecked);
-		}
-	}
+}
 
 	public void onClickedSetGroup(View v) {
 		
 		String lat = Double.toString(markerLat);
 		String lon = Double.toString(markerLon);
 
-		// 값 받아오기
-		resultText2 = "title=" + title.getText().toString() + "&"
-				+ "contents=" + description.getText().toString() + "&"
-				+ "location=" + regionSpinner.getSelectedItem().toString() + "&"
-				+ "date=" + dateEditText.getText().toString() + "&"
-				+ "people=" + Integer.parseInt(number.getText().toString()) +"&";
+		//id 저장되어 있는 sharedPreferences 가져오기
+		SharedPreferences pref = getSharedPreferences("idStorage",MODE_PRIVATE);
+
+		// 서버에 넘길 변수 값 저장
+		id = pref.getString("id", "");
+		mTitle = title.getText().toString();
+		mContents = description.getText().toString();
+		mLocation = regionSpinner.getSelectedItem().toString();
+		mDate = dateEditText.getText().toString();
+		mPeople = number.getText().toString();
+		mLang = lat;
+		mLong = lon;
 
 		making = new table();
 		making.execute();
 		
-		Toast.makeText(context, "모임 만들기가 완료되었습니다. " + resultText, Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, "모임 만들기가 완료되었습니다. ", Toast.LENGTH_LONG).show();
 		finish();
 	}
 	
@@ -230,8 +229,6 @@ public class SetGroupActivity extends ActionBarActivity {
 		protected String doInBackground(String... params) {
 
 			try {
-				SharedPreferences pref = getSharedPreferences("idStorage",MODE_PRIVATE);
-				
 				URL myUrl = new URL("http://52.69.67.4/table.php");
 				HttpURLConnection http = (HttpURLConnection) myUrl
 						.openConnection();
@@ -242,21 +239,23 @@ public class SetGroupActivity extends ActionBarActivity {
 					http.setDoOutput(true); // 서버로 쓰기 모드 지정
 					http.setRequestMethod("POST");
 					http.setRequestProperty("charset", "UTF-8");
-
-					// 연결되었음 코드가 리턴되면.
-
-					//id = ID.getText().toString();
-					//////////////////////////////////////////////////////////
-					resultText3 ="id="+pref.getString("id","");
-					///////////////////////////////////////////////////////////
-					resultText = resultText1 + resultText2 +resultText3;
-					Log.e("tag111", resultText);
 					
+					StringBuffer buffer = new StringBuffer();
+					buffer.append("category").append("=").append(radioChecked).append("&");
+					buffer.append("title").append("=").append(mTitle).append("&");
+					buffer.append("contents").append("=").append(mContents).append("&");
+					buffer.append("location").append("=").append(mLocation).append("&");
+					buffer.append("date").append("=").append(mDate).append("&");
+					buffer.append("people").append("=").append(mPeople).append("&");
+					buffer.append("id").append("=").append(id).append("&");
+					buffer.append("lang").append("=").append(mLang).append("&");
+					buffer.append("lang2").append("=").append(mLong);
 
+					Log.i("SetGroupActivity", buffer.toString());
 					OutputStreamWriter outStream = new OutputStreamWriter(
 							http.getOutputStream());
 					PrintWriter writer = new PrintWriter(outStream);
-					writer.write(resultText);
+					writer.write(buffer.toString());
 					writer.flush();
 					writer.close();
 					outStream.close();
@@ -281,11 +280,14 @@ public class SetGroupActivity extends ActionBarActivity {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 
-			
 		}
 	}
+	
+	/*************
+	 * 상세지역 설정
+	 * @param v
+	 */
 	public void specificBtn(View v){
-		//상세 지역 설정
 		double latitude= 0;
 		double longitude = 0;
 		int zoomLevel = 0;
