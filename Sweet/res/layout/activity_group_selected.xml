@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical"
     tools:context="com.example.sweet.GroupSelectedActivity" >
 
@@ -233,17 +234,22 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="#ff000000"
+            android:background="#64C6C2"
             android:onClick="joinBtn"
             android:text="가입하기"
             android:textColor="#FFFFFF" />
+        
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#ffffff" />
 
         <Button
             android:id="@+id/Button_groupSelected2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="#FF8585"
+            android:background="#64C6C2"
             android:text="가입자 정보"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -260,7 +266,7 @@
             android:background="#33000000"
             android:padding="3dp"
             android:paddingLeft="10dp"
-            android:text="댓글" />
+            android:text="댓글 입력" />
     </LinearLayout>
 
     <ListView
@@ -291,14 +297,16 @@
 
         <Button
             android:id="@+id/Button_commentRegister"
-            android:layout_width="20dp"
+            android:layout_width="40dp"
             android:layout_height="20dp"
             android:layout_alignRight="@+id/EditText_comment"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:background="#01DFD7"
+            android:background="#64C6C2"
             android:onClick="setCommentBtn"
-            android:textColor="#FFFFFF" />
+            android:text="등록"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp" />
     </RelativeLayout>
 
 </LinearLayout>

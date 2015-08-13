@@ -101,6 +101,7 @@ public class JSONParser {
     
     public JSONObject getJSONObject(String str){
     	json = "{\"board\":" + str + "}";
+    	Log.i("profile", json);
     	try {
 			jObj = new JSONObject(json);
 		} catch (JSONException e) {

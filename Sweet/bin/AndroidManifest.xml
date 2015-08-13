@@ -73,12 +73,14 @@
         </activity>
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search" >
+            android:label="@string/title_activity_search" 
+            android:theme="@style/CustomActionBarTheme2">
 	</activity>
 	<activity
             android:name=".GroupSelectedActivity"
             android:label="@string/title_activity_group_selected"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/CustomActionBarTheme2" >
         </activity>
         <activity
             android:name=".SetSpecificActivity"
