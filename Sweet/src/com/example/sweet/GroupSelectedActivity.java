@@ -43,10 +43,25 @@ public class GroupSelectedActivity extends ActionBarActivity{
 	// intent로 전달된 listNo 변수
 	String listNo;
 
-	// 연결할 url
-	private static String url = "http://52.69.67.4/printing.php";
+	/************************
+	 * url
+	 * 모임 게시판을 클릭했을 때 모임 정보 및 댓글 내용이 출력된다.
+	 ***********************/
+	private static String urlBoard = "http://52.69.67.4/printing.php";
+	/************************
+	 * url
+	 * 입력된 댓글을 등록해준다.
+	 ***********************/
 	private static String urlReply = "http://52.69.67.4/reply.php";
+	/************************
+	 * url
+	 *  ?
+	 ***********************/
 	private static String urlJoin = "http://52.69.67.4/tes4.php";
+	/************************
+	 * url
+	 * 가입된 모임을 탈퇴시킨다.
+	 ***********************/
 	private static String urlDelete = "http://52.69.67.4/delete.php";
 	// 받은 데이터 저장할 String변수
 	static String myResult;
@@ -62,6 +77,10 @@ public class GroupSelectedActivity extends ActionBarActivity{
 	EditText comment;
 	
 
+	// JSON Node Names
+	private static final String TAG_OS = "board";
+	private static final String TAG_OS2 = "board2";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,7 +89,7 @@ public class GroupSelectedActivity extends ActionBarActivity{
 		editComment = (EditText) findViewById(R.id.EditText_comment);
 		commentRegister = (Button) findViewById(R.id.Button_commentRegister);
 		
-		// intent로 전달된 데이터 저장
+		// intent로 전달된 게시판 번호
 		listNo = getIntent().getExtras().getString("listNo");
 		Log.i("selected", "listNo=" + listNo);
 		
@@ -105,28 +124,30 @@ public class GroupSelectedActivity extends ActionBarActivity{
 				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
 		commentList.setAdapter(adapter);
 		
-		new JSONParse().execute();
+		new boardData().execute();
 	}
 	
-	private class JSONParse extends AsyncTask<String, String, JSONObject> {
+	/***********************************
+	 * 게시물 번호와 로그인한 id를 전달
+	 * 
+	 * @author Eunji
+	 *
+	 */
+	
+	private class boardData extends AsyncTask<String, String, JSONObject> {
 		private ProgressDialog pDialog;
 
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Log.i("selected","onPreExecute()");
-
 		}
 
 		@Override
 		protected JSONObject doInBackground(String... args) {
 			try {
-				Log.i("selected","doInBackground시작");
 				JSONParser jParser = new JSONParser();
-				
-				URL myUrl = new URL(url);
-				HttpURLConnection http = (HttpURLConnection) myUrl
-						.openConnection();
+				URL myUrl = new URL(urlBoard);
+				HttpURLConnection http = (HttpURLConnection) myUrl.openConnection();
 				
 				if (http != null) {
 					http.setUseCaches(false);
@@ -135,18 +156,20 @@ public class GroupSelectedActivity extends ActionBarActivity{
 					http.setRequestMethod("POST");
 					http.setRequestProperty("charset", "UTF-8");
 					
+					/********************
+					 * 게시물 번호와 내 아이디 전달
+					 *******************/
 					StringBuffer buffer = new StringBuffer();
 					buffer.append("no").append("=").append(listNo).append("&");
-					buffer.append("id").append("=").append(id);
+					buffer.append("id").append("=").append(id).append("&");
 
-					OutputStreamWriter outStream = new OutputStreamWriter(
-							http.getOutputStream());
+					OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream());
 					PrintWriter writer = new PrintWriter(outStream);
 					writer.write(buffer.toString());
 					writer.flush();
 					writer.close();
 					outStream.close();
-
+					
 					//-------------------------
 					//   서버에서 전송받기
 					//-------------------------
@@ -169,9 +192,8 @@ public class GroupSelectedActivity extends ActionBarActivity{
 				http.disconnect();
 
 				// 서버에서 받은 string에서 jsonObject를 분리해 내는 함수 호출
-				Log.i("selected", "$");
 				JSONObject json = jParser.getJSONObject(myResult);
-				//Log.i("selected", json.toString());
+				Log.i("SetGroupActivity", json.toString());
 				return json;
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
@@ -180,12 +202,13 @@ public class GroupSelectedActivity extends ActionBarActivity{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Log.i("search","beforeReturnNull");
+			Log.i("selected","beforeReturnNull");
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(JSONObject json) {
+			
 		}
 	}
 
@@ -280,7 +303,7 @@ public class GroupSelectedActivity extends ActionBarActivity{
 				JSONParser jParser = new JSONParser();
 				
 				
-				URL myUrl = new URL(urlDelete);
+				URL myUrl = new URL(urlJoin);
 				HttpURLConnection http = (HttpURLConnection) myUrl.openConnection();
 				Log.i("join","joindfsdfsdf");
 
@@ -293,7 +316,14 @@ public class GroupSelectedActivity extends ActionBarActivity{
 					
 					StringBuffer buffer = new StringBuffer();
 					buffer.append("no").append("=").append(listNo).append("&");
-					buffer.append("id").append("=").append(id);
+					buffer.append("id").append("=").append(id).append("&");
+					buffer.append("ROOM").append("=").append(listNo).append("&");
+					buffer.append("location").append("=").append("서울").append("&");
+					buffer.append("title").append("=").append("3번꺼").append("&");
+					buffer.append("contents").append("=").append("3번내용").append("&");
+					buffer.append("date").append("=").append("2015-09-13").append("&");
+					buffer.append("people").append("=").append("4").append("&");
+					buffer.append("category").append("=").append("동행").append("&");
 
 					Log.i("join",buffer.toString());
 					OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream());
@@ -341,7 +371,10 @@ public class GroupSelectedActivity extends ActionBarActivity{
 		sweetJoin.execute();
 	}
 
-	
+	/*****************
+	 * 로그인 시 사용했던 아이디를 받아온다.
+	 * @return id
+	 */
     public String getPreferences(){
         SharedPreferences pref = getSharedPreferences("idStorage", MODE_PRIVATE);
         return pref.getString("id", "");
