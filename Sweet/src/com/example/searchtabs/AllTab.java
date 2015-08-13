@@ -118,24 +118,6 @@ public class AllTab extends Fragment {
 					String date = c.getString(TAG_DATE);
 					String people = c.getString(TAG_PEOPLE);
 					String current = c.getString(TAG_CURRENT);
-					// Adding value HashMap key => value
-
-					/*
-					 * HashMap<String, String> map = new HashMap<String,
-					 * String>();
-					 * 
-					 * map.put(TAG_ID, id); map.put(TAG_TITLE, title);
-					 * map.put(TAG_DATE, date); map.put(TAG_PEOPLE, people);
-					 */
-
-					/*
-					 * Log.i("TAG", "*"); boardlist.add(map);
-					 */
-					/*
-					 * adapter = new SimpleAdapter(getActivity(), boardlist,
-					 * R.layout.list_v, new String[] { TAG_VER,TAG_NAME, TAG_API
-					 * }, new int[] { R.id.vers,R.id.name, R.id.api});
-					 */
 
 					Resources res = getResources();
 

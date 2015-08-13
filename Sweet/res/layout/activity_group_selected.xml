@@ -290,6 +290,7 @@
             android:textSize="14dp" />
 
         <Button
+            android:id="@+id/Button_commentRegister"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignRight="@+id/EditText_comment"

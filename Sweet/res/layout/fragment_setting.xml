@@ -32,7 +32,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/ImageView_version"
 	        android:layout_centerHorizontal="true"
-	        android:text="내용내용내용"
+	        android:text="ver 0.0.0"
 	        android:textSize="12dp" />
 
     </RelativeLayout>
