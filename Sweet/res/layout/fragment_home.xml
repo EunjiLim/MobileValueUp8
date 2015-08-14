@@ -11,13 +11,17 @@
         class="com.google.android.gms.maps.SupportMapFragment"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.examle.customview.CustomButton
+        android:layout_width="70dp"
+        android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/mapLocationBtn"
-        android:text="지역 검색" />
+        android:text="지역 검색"
+        android:textColor="#ff000000"
+        android:background="#66000000"
+        android:textSize="12dp"
+        android:layout_marginTop="5dp" />
 
     <Button
         android:id="@+id/setGroupBtn"
