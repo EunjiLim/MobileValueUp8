@@ -31,38 +31,38 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:id="@+id/RelativeLayout_selectedGroupNameAndSex"
+                android:id="@+id/RelativeLayout_selectedGroupIDAndSex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp" >
 
                 <TextView
-                    android:id="@+id/TextView_selectedGroupnameAndSex"
+                    android:id="@+id/TextView_selectedGroupIDAndSex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="15dp"
-                    android:text="이름(성별)"
+                    android:text="ID(성별)"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/TextView_selectedGroupNameResult"
+                    android:id="@+id/TextView_selectedGroupIDResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/TextView_selectedGroupnameAndSex"
+                    android:layout_toRightOf="@id/TextView_selectedGroupIDAndSex"
                     android:text="temp"
                     android:textSize="20dp"
                     android:textStyle="bold" />
-                
+
                 <TextView
                     android:id="@+id/Parenthesis1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/TextView_selectedGroupNameResult"
+                    android:layout_toRightOf="@id/TextView_selectedGroupIDResult"
                     android:text="("
                     android:textSize="20dp"
                     android:textStyle="bold" />
-                
+
                 <TextView
                     android:id="@+id/TextView_selectedGroupSexResult"
                     android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                     android:text="temp"
                     android:textSize="20dp"
                     android:textStyle="bold" />
-                
+
                 <TextView
                     android:id="@+id/Parenthesis2"
                     android:layout_width="wrap_content"
@@ -218,10 +218,10 @@
         </LinearLayout>
     </LinearLayout>
 
-	<TextView 
-	    android:id="@+id/TextView_groupSeletedContent"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/TextView_groupSeletedContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -238,7 +238,7 @@
             android:onClick="joinBtn"
             android:text="가입하기"
             android:textColor="#FFFFFF" />
-        
+
         <View
             android:layout_width="1dp"
             android:layout_height="50dp"

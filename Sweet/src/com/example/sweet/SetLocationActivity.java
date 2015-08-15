@@ -7,6 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+
+/***********************************
+ * 구글 플레이 서비스 라이브러리를 이용해서 
+ * 구글 지도에서 선택한 위치의 위도와 경도를 얻어온다.
+ * @author Eunji
+ *
+ */
 public class SetLocationActivity extends Activity {
 
    @Override
