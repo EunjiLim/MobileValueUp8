@@ -59,7 +59,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	TextView mSex, mID, mBirthday, mKakaoID, mPhone;
 	TextView mTitle, mLocation, mDate, mPeople, mContents;
 	EditText editComment;
-	Button commentRegister;
+	Button joinButton, commentRegister;
 
 	// context
 	Context context;
@@ -87,6 +87,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	private static final String TAG_OS = "board";
 	private static final String TAG_OS2 = "board2";
 	private static final String TAG_REPLY = "reply";
+	private static final String TAG_FLAG = "flag"; 
 
 	//TAG 
 	private static final String TAG_TITLE = "title";
@@ -104,6 +105,9 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	private static final String TAG_SEX = "SEX";
 
 	JSONArray boardArray = null;
+	JSONObject boardObj;
+	String flag = "0";
+	String title, location, date, contents, people, category;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +124,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 		mPeople= (TextView) findViewById(R.id.TextView_groupSelectedFixedNumberResult);
 		mContents= (TextView) findViewById(R.id.TextView_groupSeletedContent);
 
+		joinButton = (Button) findViewById(R.id.Button_groupSelected1);
 		editComment = (EditText) findViewById(R.id.EditText_comment);
 		commentRegister = (Button) findViewById(R.id.Button_commentRegister);
 
@@ -163,7 +168,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 
 	/*******************************************
 	 * class boardData
-	 * 게시물 번호 전달 > 게시물 내용, 글쓴이 프로필, 댓글 내용 받아옴
+	 * 게시물 번호 전달 > 게시물 내용, 글쓴이 프로필,가입 여부, 댓글 내용 받아옴
 	 * 
 	 * @author Eunji
 	 *
@@ -196,7 +201,8 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					 * 게시물 번호와 전달
 					 *******************/
 					StringBuffer buffer = new StringBuffer();
-					buffer.append("no").append("=").append(listNo);
+					buffer.append("no").append("=").append(listNo).append("&");
+					buffer.append("id").append("=").append(id);
 
 					OutputStreamWriter outStream = new OutputStreamWriter(
 							http.getOutputStream());
@@ -249,7 +255,6 @@ public class GroupSelectedActivity extends ActionBarActivity {
 				 * 모임 만든 사람 정보 받아오기
 				 **************************/
 				String id, phone, kakaoid, birthday, sex;
-				String title, location, date, contents, people;
 				boardArray = json.getJSONArray(TAG_OS2);
 
 				// ID, PHONE, KAKAOID, BIRTHDAY, NAME, SEX
@@ -285,6 +290,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					date = c.getString(TAG_DATE);
 					people = c.getString(TAG_PEOPLE);
 					contents = c.getString(TAG_CONTENTS);
+					category = c.getString(TAG_CATEGORY);
 
 					mLocation.setText(location);
 					mPeople.setText(people);
@@ -294,13 +300,24 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					//액션바 제목 모임 제목으로 변경
 					getSupportActionBar().setTitle(title);
 				}
+				
+				/***************************
+				 * 가입 여부 받아오기
+				 **************************/
+				boardObj = json.getJSONObject(TAG_FLAG);
+				flag = boardObj.getString("f");
+				if(flag.equals("1")){
+					//가입하기 버튼을 탈퇴하기 버튼으로 바꿔주기
+					joinButton.setText("탈퇴하기");
+				}
+				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	/******************************
+	/******************************꾸
 	 * 댓글 등록 스레드
 	 * 
 	 * @author Eunji
@@ -384,6 +401,14 @@ public class GroupSelectedActivity extends ActionBarActivity {
 		}
 	}
 
+	
+	/******************************꾸
+	 * 가입하기 / 탈퇴하기 버튼
+	 * 
+	 * 
+	 * @author Eunji
+	 *
+	 ******************************/
 	private class join extends AsyncTask<String, String, JSONObject> {
 		private ProgressDialog pDialog;
 
@@ -398,8 +423,15 @@ public class GroupSelectedActivity extends ActionBarActivity {
 			try {
 				Log.i("join", "join doInBackground시작");
 				JSONParser jParser = new JSONParser();
+				URL myUrl;
+				if(flag.equals("0")){
+					myUrl = new URL(urlJoin);
+					flag = "1";
+				} else {
+					myUrl = new URL(urlDelete);
+					flag = "0";
+				}
 
-				URL myUrl = new URL(urlJoin);
 				HttpURLConnection http = (HttpURLConnection) myUrl
 						.openConnection();
 				Log.i("join", "joindfsdfsdf");
@@ -416,16 +448,16 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					buffer.append("id").append("=").append(id).append("&");
 					buffer.append("ROOM").append("=").append(listNo)
 							.append("&");
-					buffer.append("location").append("=").append("서울")
+					buffer.append("location").append("=").append(location)
 							.append("&");
-					buffer.append("title").append("=").append("3번꺼")
+					buffer.append("title").append("=").append(title)
 							.append("&");
-					buffer.append("contents").append("=").append("3번내용")
+					buffer.append("contents").append("=").append(contents)
 							.append("&");
 					buffer.append("date").append("=").append("2015-09-13")
 							.append("&");
-					buffer.append("people").append("=").append("4").append("&");
-					buffer.append("category").append("=").append("동행")
+					buffer.append("people").append("=").append(people).append("&");
+					buffer.append("category").append("=").append(category)
 							.append("&");
 
 					Log.i("join", buffer.toString());
@@ -460,26 +492,38 @@ public class GroupSelectedActivity extends ActionBarActivity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Log.i("search", "beforeReturnNull");
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(JSONObject json) {
+			if(flag.equals("0")){
+				joinButton.setText("가입하기");
+			}else{
+				joinButton.setText("탈퇴하기");
+			}
 		}
 	}
 
+	/******************************
+	 * 가입하기 버튼 클릭 시 호출되는 함수
+	 * @param v
+	 ******************************/
 	public void joinBtn(View v) {
-		Toast.makeText(getApplicationContext(), "가입되었습니다.", 1500).show();
+		if(flag.equals("0")){
+			Toast.makeText(getApplicationContext(), "가입되었습니다.", 1500).show();
+		}else{
+			Toast.makeText(getApplicationContext(), "탈퇴되었습니다.", 1500).show();
+		}
 		sweetJoin = new join();
 		sweetJoin.execute();
 	}
 
-	/*****************
+	/**************************
+	 * SharedPreferences 이용
 	 * 로그인 시 사용했던 아이디를 받아온다.
-	 * 
 	 * @return id
-	 */
+	 **************************/
 	public String getPreferences() {
 		SharedPreferences pref = getSharedPreferences("idStorage", MODE_PRIVATE);
 		return pref.getString("id", "");
