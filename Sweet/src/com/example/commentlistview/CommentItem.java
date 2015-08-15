@@ -9,11 +9,12 @@ public class CommentItem {
 	private String [] mData;
 	private boolean mSelectable = true;
 	
-	public CommentItem(Drawable icon, String name, String comment){
-		mData = new String[2];
+	public CommentItem(Drawable icon, String name, String comment, String date){
+		mData = new String[3];
 		mIcon = icon;
 		mData[0]= name;
 		mData[1]= comment;
+		mData[2]= date;
 	}
 	
 	public String[] getData(){

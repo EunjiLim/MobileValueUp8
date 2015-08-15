@@ -8,10 +8,14 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -76,8 +80,6 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	// AsyncTasks
 	private commentReg commentBoard;
 	private join sweetJoin;
-	ListView commentList;
-	CommentListAdapter adapter;
 	EditText comment;
 
 	// JSON Node Names
@@ -87,9 +89,9 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	private static final String TAG_OS = "board";
 	private static final String TAG_OS2 = "board2";
 	private static final String TAG_REPLY = "reply";
-	private static final String TAG_FLAG = "flag"; 
+	private static final String TAG_FLAG = "flag";
 
-	//TAG 
+	// TAG
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_CATEGORY = "category";
 	private static final String TAG_LOCATION = "location";
@@ -97,6 +99,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	private static final String TAG_CURRENT = "current";
 	private static final String TAG_DATE = "date";
 	private static final String TAG_PEOPLE = "people";
+	private static final String TAG_CDATE = "DATE";
 
 	private static final String TAG_PHONE = "PHONE";
 	private static final String TAG_ID = "ID";
@@ -109,20 +112,24 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	String flag = "0";
 	String title, location, date, contents, people, category;
 
+	// Comment Listview
+	ListView commentList;
+	CommentListAdapter adapter;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_group_selected);
-		
+
 		mID = (TextView) findViewById(R.id.TextView_selectedGroupIDResult);
 		mSex = (TextView) findViewById(R.id.TextView_selectedGroupSexResult);
 		mBirthday = (TextView) findViewById(R.id.TextView_selectedGroupBirthdayResult);
-		mKakaoID= (TextView) findViewById(R.id.TextView_selectedGroupKakaoIDResult);
-		mPhone= (TextView) findViewById(R.id.TextView_selectedGroupPhoneResult);
-		mLocation= (TextView) findViewById(R.id.TextView_groupSelectedLocationResult);
-		mDate= (TextView) findViewById(R.id.TextView_groupSelectedDateResult);
-		mPeople= (TextView) findViewById(R.id.TextView_groupSelectedFixedNumberResult);
-		mContents= (TextView) findViewById(R.id.TextView_groupSeletedContent);
+		mKakaoID = (TextView) findViewById(R.id.TextView_selectedGroupKakaoIDResult);
+		mPhone = (TextView) findViewById(R.id.TextView_selectedGroupPhoneResult);
+		mLocation = (TextView) findViewById(R.id.TextView_groupSelectedLocationResult);
+		mDate = (TextView) findViewById(R.id.TextView_groupSelectedDateResult);
+		mPeople = (TextView) findViewById(R.id.TextView_groupSelectedFixedNumberResult);
+		mContents = (TextView) findViewById(R.id.TextView_groupSeletedContent);
 
 		joinButton = (Button) findViewById(R.id.Button_groupSelected1);
 		editComment = (EditText) findViewById(R.id.EditText_comment);
@@ -146,29 +153,12 @@ public class GroupSelectedActivity extends ActionBarActivity {
 
 		commentList = (ListView) findViewById(R.id.ListView_comment);
 		adapter = new CommentListAdapter(this);
-		Resources res = getResources();
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		adapter.addItem(new CommentItem(
-				res.getDrawable(R.drawable.profileicon), "이름", "내용내용"));
-		commentList.setAdapter(adapter);
 
 		new boardData().execute();
 	}
 
 	/*******************************************
-	 * class boardData
-	 * 게시물 번호 전달 > 게시물 내용, 글쓴이 프로필,가입 여부, 댓글 내용 받아옴
+	 * class boardData 게시물 번호 전달 > 게시물 내용, 글쓴이 프로필,가입 여부, 댓글 내용 받아옴
 	 * 
 	 * @author Eunji
 	 *
@@ -244,7 +234,6 @@ public class GroupSelectedActivity extends ActionBarActivity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Log.i("SetGroupActivity", "beforeReturnNull");
 			return null;
 		}
 
@@ -260,7 +249,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 				// ID, PHONE, KAKAOID, BIRTHDAY, NAME, SEX
 				for (int i = 0; i < boardArray.length(); i++) {
 					JSONObject c = boardArray.getJSONObject(i);
-
+					Log.i("selected","hmm...");
 					// Storing JSON item in a Variable
 					id = c.getString(TAG_ID);
 					phone = c.getString(TAG_PHONE);
@@ -274,11 +263,11 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					mBirthday.setText(birthday);
 					mSex.setText(sex);
 				}
-				
+
 				/***************************
 				 * 모임 정보 받아오기
 				 **************************/
-				
+				Log.i("selected","모임정보받아오기");
 				boardArray = json.getJSONArray(TAG_OS);
 				// title, location, contents current, ID, date, people
 				for (int i = 0; i < boardArray.length(); i++) {
@@ -292,34 +281,59 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					contents = c.getString(TAG_CONTENTS);
 					category = c.getString(TAG_CATEGORY);
 
+					Log.i("selected", contents);
 					mLocation.setText(location);
 					mPeople.setText(people);
 					mDate.setText(date);
 					mContents.setText(contents);
-					
-					//액션바 제목 모임 제목으로 변경
+
+					// 액션바 제목 모임 제목으로 변경
 					getSupportActionBar().setTitle(title);
 				}
-				
+
 				/***************************
 				 * 가입 여부 받아오기
 				 **************************/
 				boardObj = json.getJSONObject(TAG_FLAG);
 				flag = boardObj.getString("f");
-				if(flag.equals("1")){
-					//가입하기 버튼을 탈퇴하기 버튼으로 바꿔주기
+				Log.i("selected","??");
+				if (flag.equals("1")) {
+					// 가입하기 버튼을 탈퇴하기 버튼으로 바꿔주기
 					joinButton.setText("탈퇴하기");
 				}
-				
+
+				Log.i("selected", "가입 여부 받아오기 끝");
+				/****************************
+				 * 댓글 받아서 출력하기
+				 ****************************/
+				boardArray = json.getJSONArray(TAG_REPLY);
+				Log.i("selected",boardArray.toString());
+				Resources res = getResources();
+				String cId, cContents, cDate;
+
+				for (int i = 0; i < boardArray.length(); i++) {
+					JSONObject c = boardArray.getJSONObject(i);
+					Log.i("selected", "댓글 for문");
+					cId = c.getString(TAG_ID);
+					cContents = c.getString(TAG_CONTENTS);
+					cDate = c.getString(TAG_CDATE);
+					Log.i("selected", cId+cContents+cDate);
+					// Storing JSON item in a Variable
+					adapter.addItem(new CommentItem(res
+							.getDrawable(R.drawable.profile_icon), cId,
+							cContents, cDate));
+					commentList.setAdapter(adapter);
+				}
+				//commentList.setAdapter(adapter);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	/******************************꾸
+	/******************************
 	 * 댓글 등록 스레드
-	 * 
+	 * 댓글 등록 버튼 눌렀을 때
 	 * @author Eunji
 	 *
 	 ******************************/
@@ -353,9 +367,8 @@ public class GroupSelectedActivity extends ActionBarActivity {
 					StringBuffer buffer = new StringBuffer();
 					buffer.append("no").append("=").append(listNo).append("&");
 					buffer.append("id").append("=").append(id).append("&");
-					buffer.append("contents").append("=")
-							.append(editComment.getText()).append("&");
-					buffer.append("date").append("=").append("1987-08-07");
+					buffer.append("contents").append("=").append(editComment.getText()).append("&");
+					buffer.append("date").append("=").append(getNow());
 
 					Log.i("selected", buffer.toString());
 					OutputStreamWriter outStream = new OutputStreamWriter(
@@ -396,14 +409,18 @@ public class GroupSelectedActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(JSONObject json) {
 			// 댓글 게시판 내용 업데이트
+			Resources res = getResources();
+			adapter.addItem(new CommentItem(res
+					.getDrawable(R.drawable.profile_icon), id, editComment.getText().toString(), getNow()));
+			commentList.setAdapter(adapter);
 			// EditText 기존 내용 없애기
 			editComment.setText("");
+
 		}
 	}
 
-	
-	/******************************꾸
-	 * 가입하기 / 탈퇴하기 버튼
+	/******************************
+	 * 꾸 가입하기 / 탈퇴하기 버튼
 	 * 
 	 * 
 	 * @author Eunji
@@ -424,7 +441,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 				Log.i("join", "join doInBackground시작");
 				JSONParser jParser = new JSONParser();
 				URL myUrl;
-				if(flag.equals("0")){
+				if (flag.equals("0")) {
 					myUrl = new URL(urlJoin);
 					flag = "1";
 				} else {
@@ -456,7 +473,8 @@ public class GroupSelectedActivity extends ActionBarActivity {
 							.append("&");
 					buffer.append("date").append("=").append("2015-09-13")
 							.append("&");
-					buffer.append("people").append("=").append(people).append("&");
+					buffer.append("people").append("=").append(people)
+							.append("&");
 					buffer.append("category").append("=").append(category)
 							.append("&");
 
@@ -497,9 +515,9 @@ public class GroupSelectedActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPostExecute(JSONObject json) {
-			if(flag.equals("0")){
+			if (flag.equals("0")) {
 				joinButton.setText("가입하기");
-			}else{
+			} else {
 				joinButton.setText("탈퇴하기");
 			}
 		}
@@ -507,12 +525,13 @@ public class GroupSelectedActivity extends ActionBarActivity {
 
 	/******************************
 	 * 가입하기 버튼 클릭 시 호출되는 함수
+	 * 
 	 * @param v
 	 ******************************/
 	public void joinBtn(View v) {
-		if(flag.equals("0")){
+		if (flag.equals("0")) {
 			Toast.makeText(getApplicationContext(), "가입되었습니다.", 1500).show();
-		}else{
+		} else {
 			Toast.makeText(getApplicationContext(), "탈퇴되었습니다.", 1500).show();
 		}
 		sweetJoin = new join();
@@ -520,12 +539,23 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	}
 
 	/**************************
-	 * SharedPreferences 이용
-	 * 로그인 시 사용했던 아이디를 받아온다.
+	 * SharedPreferences 이용 로그인 시 사용했던 아이디를 받아온다.
+	 * 
 	 * @return id
 	 **************************/
 	public String getPreferences() {
 		SharedPreferences pref = getSharedPreferences("idStorage", MODE_PRIVATE);
 		return pref.getString("id", "");
+	}
+	
+	/**************************
+	 * 오늘 날짜와 현재 시간 받아오기
+	 **************************/
+	public String getNow(){
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(
+				"yyyy.MM.dd HH:mm:ss", Locale.KOREA);
+		Date currentTime = new Date();
+		String mTime = mSimpleDateFormat.format(currentTime);
+		return mTime;
 	}
 }

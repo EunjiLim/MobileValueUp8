@@ -15,6 +15,7 @@ public class CommentView extends LinearLayout{
 	private ImageView mIcon;
 	private TextView name;
 	private TextView comment;
+	private TextView date;
 
 
 	public CommentView(Context context, CommentItem aItem) {
@@ -24,14 +25,16 @@ public class CommentView extends LinearLayout{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.commentitem, this, true);
 		
-		mIcon = (ImageView) findViewById(R.id.ImageView_icon);
+		mIcon = (ImageView) findViewById(R.id.ImageView_commentIcon);
 		mIcon.setImageDrawable(aItem.getIcon());
 		
-		name = (TextView) findViewById(R.id.TextView_commentName);
+		name = (TextView) findViewById(R.id.TextView_commentID);
 		name.setText(aItem.getData(0));
-
+		
+		date = (TextView) findViewById(R.id.TextView_commentDate);
+		date.setText(aItem.getData(2));
 		// Set Text number of member
-		comment = (TextView) findViewById(R.id.TextView_comment);
+		comment = (TextView) findViewById(R.id.TextView_commentContents);
 		comment.setText(aItem.getData(1));
 	}
 	
@@ -40,7 +43,9 @@ public class CommentView extends LinearLayout{
 			name.setText(data);
 		} else if (index == 1) {
 			comment.setText(data);
-		} else {
+		} else if (index == 2) {
+			date.setText(data);
+		}else{
 			throw new IllegalArgumentException();
 		}
 	}
