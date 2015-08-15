@@ -102,6 +102,12 @@ public class FragmentHome extends Fragment{
 				startingLon = longitude;
 		        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(startingLat, startingLon),(float)11));
 				
+			} else if(resultCode==2){
+				double latitude = data.getDoubleExtra("lat", 0.0);
+				double longitude = data.getDoubleExtra("lon", 0.0);
+				startingLat = latitude;
+				startingLon = longitude;
+		        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(startingLat, startingLon),(float)9));
 			}
 		}
 	}

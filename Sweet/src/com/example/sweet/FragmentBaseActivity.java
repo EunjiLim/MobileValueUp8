@@ -67,7 +67,7 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 		getSupportActionBar().addTab(ProfileTab);
 		getSupportActionBar().addTab(SettingTab);
 		
-		getSupportActionBar().setTitle("Home");
+		getSupportActionBar().setTitle("홈");
 		
 		tabsviewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -76,9 +76,9 @@ public class FragmentBaseActivity extends ActionBarActivity implements
 				// TODO Auto-generated method stub
 				
 				if (position == 0)
-					getSupportActionBar().setTitle("Home");
+					getSupportActionBar().setTitle("홈");
 				else if(position == 1){
-					getSupportActionBar().setTitle("Search");
+					getSupportActionBar().setTitle("검색");
 				}
 				else if(position == 2)
 					getSupportActionBar().setTitle("내 정보");
