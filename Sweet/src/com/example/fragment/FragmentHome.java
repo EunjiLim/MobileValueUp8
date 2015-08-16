@@ -47,7 +47,7 @@ public class FragmentHome extends Fragment{
         // TODO Auto-generated method stub
         super.onViewCreated(view, savedInstanceState);
         
-
+        //맵 초기화, 처음 화면 위치 설정
         map =  ((SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map)).getMap();
         startingLat= 36.1138582;
         startingLon = 128.1728974;
@@ -66,6 +66,7 @@ public class FragmentHome extends Fragment{
 			}
 		});
         
+        //지역 선택(손가락 줌 사용 안하고 그 지역으로 빠르게 이동)
         mapLocationBtn = (Button) view.findViewById(R.id.mapLocationBtn);
         mapLocationBtn.setOnClickListener(new OnClickListener() {
 			
@@ -78,6 +79,7 @@ public class FragmentHome extends Fragment{
 			}
 		});
         
+        //지도 위에 마커 올려놓기
         putMarker();
     }
 
@@ -103,6 +105,7 @@ public class FragmentHome extends Fragment{
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		
+		//도시 위치 받아서 이동
 		if(requestCode==locationRequestCode){
 			if(resultCode==1){
 				double latitude = data.getDoubleExtra("lat", 0.0);
@@ -111,6 +114,7 @@ public class FragmentHome extends Fragment{
 				startingLon = longitude;
 		        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(startingLat, startingLon),(float)11));
 				
+		//도 위치 받아서 이동        
 			} else if(resultCode==2){
 				double latitude = data.getDoubleExtra("lat", 0.0);
 				double longitude = data.getDoubleExtra("lon", 0.0);
