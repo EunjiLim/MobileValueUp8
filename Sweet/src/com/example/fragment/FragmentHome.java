@@ -79,8 +79,8 @@ public class FragmentHome extends Fragment{
 			}
 		});
         
-        //지도 위에 마커 올려놓기
-        putMarker();
+        //지도 위에 마커 올려놓기(서버에서 경도, 위도, 제목, 내용)<- 여기!
+        putMarker(double lat, double lon, String title, String text);
     }
 
 
@@ -125,7 +125,7 @@ public class FragmentHome extends Fragment{
 		}
 	}
 	
-	public void putMarker(){
+	public void putMarker(double lat, double lon, String title, String text){
 		LatLng chuncheon = new LatLng(37.875101, 127.735783);
         
         map.addMarker(new MarkerOptions().position(chuncheon).title("자전거 여행").
