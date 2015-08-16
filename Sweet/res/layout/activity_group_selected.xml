@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="15dp"
                     android:text="ID(성별)"
-                    android:textSize="20dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/TextView_selectedGroupIDAndSex"
                     android:text="temp"
-                    android:textSize="20dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/TextView_selectedGroupIDResult"
                     android:text="("
-                    android:textSize="20dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/Parenthesis1"
                     android:text="temp"
-                    android:textSize="20dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/TextView_selectedGroupSexResult"
                     android:text=")"
-                    android:textSize="20dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -103,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="생년월일"
-                        android:textSize="13dp" />
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/TextView_selectedGroupKakaoID"
@@ -112,7 +112,7 @@
                         android:layout_below="@id/TextView_selectedGroupBirthday"
                         android:paddingTop="3dp"
                         android:text="카카오톡아이디"
-                        android:textSize="13dp" />
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/TextView_selectedGroupPhone"
@@ -121,7 +121,7 @@
                         android:layout_below="@id/TextView_selectedGroupKakaoID"
                         android:paddingTop="3dp"
                         android:text="연락처"
-                        android:textSize="13dp" />
+                        android:textSize="10dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -136,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="temp"
-                        android:textSize="13dp" />
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/TextView_selectedGroupKakaoIDResult"
@@ -144,7 +144,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/TextView_selectedGroupBirthdayResult"
                         android:text="temp"
-                        android:textSize="13dp" />
+                        android:textSize="10dp"
+                   		android:paddingTop="3dp"  />
 
                     <TextView
                         android:id="@+id/TextView_selectedGroupPhoneResult"
@@ -152,7 +153,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/TextView_selectedGroupKakaoIDResult"
                         android:text="temp"
-                        android:textSize="13dp" />
+                        android:textSize="10dp"
+                   		android:paddingTop="3dp"  />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -225,9 +227,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="20dp" >
+        android:layout_height="46dp"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/Button_groupSelected1"
@@ -263,7 +264,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#33000000"
+            android:background="#22000000"
             android:padding="3dp"
             android:paddingLeft="10dp"
             android:text="댓글 입력" />

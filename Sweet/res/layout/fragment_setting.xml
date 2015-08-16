@@ -21,7 +21,7 @@
 	    <ImageView
 	        android:layout_width="90dp"
 	        android:layout_height="90dp"
-	        android:src="@drawable/profile_icon" 
+	        android:src="@drawable/version_logo" 
 	        android:layout_centerHorizontal="true"
 	        android:id="@+id/ImageView_version"
 	        android:padding="10dp"

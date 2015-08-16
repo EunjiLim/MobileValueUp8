@@ -15,18 +15,24 @@ import com.example.sweet.SetLocationActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class FragmentHome extends Fragment{
 	
 	GoogleMap map;
+	MarkerOptions marker;
+	
 	private Button setGroupBtn;
 	int locationRequestCode = 1001;
 	LatLng startingPoint;
 	double startingLat;
 	double startingLon;
 	private Button mapLocationBtn;
+	
+	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class FragmentHome extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onViewCreated(view, savedInstanceState);
+        
 
         map =  ((SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map)).getMap();
         startingLat= 36.1138582;
@@ -70,6 +77,8 @@ public class FragmentHome extends Fragment{
 				startActivityForResult(intent, locationRequestCode);
 			}
 		});
+        
+        putMarker();
     }
 
 
@@ -112,6 +121,11 @@ public class FragmentHome extends Fragment{
 		}
 	}
 	
-	
+	public void putMarker(){
+		LatLng chuncheon = new LatLng(37.875101, 127.735783);
+        
+        map.addMarker(new MarkerOptions().position(chuncheon).title("자전거 여행").
+        		snippet("춘천 자전거 여행하실 분~").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)));
+	}
 	
 }
