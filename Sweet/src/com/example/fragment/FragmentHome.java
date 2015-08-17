@@ -80,7 +80,7 @@ public class FragmentHome extends Fragment{
 		});
         
         //지도 위에 마커 올려놓기(서버에서 경도, 위도, 제목, 내용)<- 여기!
-        putMarker(double lat, double lon, String title, String text);
+        //putMarker(double lat, double lon, String title, String text);
     }
 
 

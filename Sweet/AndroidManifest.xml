@@ -27,8 +27,8 @@
         android:allowBackup="true"
         android:icon="@drawable/version_logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:largeHeap="true" >
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBko4zfBadYh4V3I5v5eJWXuK2wYToXdOU" />
@@ -39,7 +39,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
-        	android:theme="@style/CustomActionBarTheme"  >
+            android:theme="@style/CustomActionBarTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,18 +75,22 @@
         </activity>
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search" 
-            android:theme="@style/CustomActionBarTheme3">
-	</activity>
-	<activity
+            android:label="@string/title_activity_search"
+            android:theme="@style/CustomActionBarTheme3" >
+        </activity>
+        <activity
             android:name=".GroupSelectedActivity"
             android:label="@string/title_activity_group_selected"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/CustomActionBarTheme3" >
+            android:theme="@style/CustomActionBarTheme3"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".SetSpecificActivity"
             android:label="@string/title_activity_set_specific" >
+        </activity>
+        <activity
+            android:name=".JoinerInfoActivity"
+            android:label="@string/joiner_info" >
         </activity>
     </application>
 

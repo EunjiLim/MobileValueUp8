@@ -21,4 +21,5 @@
     <string name="title_activity_set_specific">SetSpecificActivity</string>
 	<string name="title_login">로그인</string>
 	<string name="check_idDuplication">중복확인</string>
+	<string name="joiner_info">가입자 정보</string>
 </resources>

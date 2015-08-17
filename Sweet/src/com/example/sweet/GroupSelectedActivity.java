@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -63,7 +64,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	TextView mSex, mID, mBirthday, mKakaoID, mPhone;
 	TextView mTitle, mLocation, mDate, mPeople, mContents;
 	EditText editComment;
-	Button joinButton, commentRegister;
+	Button joinButton, commentRegister, joinerInfo;
 
 	// context
 	Context context;
@@ -134,7 +135,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 		joinButton = (Button) findViewById(R.id.Button_groupSelected1);
 		editComment = (EditText) findViewById(R.id.EditText_comment);
 		commentRegister = (Button) findViewById(R.id.Button_commentRegister);
-
+		joinerInfo = (Button) findViewById(R.id.Button_groupSelected2);
 		// intent로 전달된 게시판 번호
 		listNo = getIntent().getExtras().getString("listNo");
 		Log.i("selected", "listNo=" + listNo);
@@ -537,7 +538,19 @@ public class GroupSelectedActivity extends ActionBarActivity {
 		sweetJoin = new join();
 		sweetJoin.execute();
 	}
-
+	
+	/******************************
+	 * 가입자 정보 버튼 클릭 시 호출되는 함수
+	 * 
+	 * @param v
+	 ******************************/
+	public void joinInfo(View v) {
+		Intent intent = new Intent(context, JoinerInfoActivity.class);
+		
+		//인텐트에 list No. 정보를 넣어서 전달한다.
+		intent.putExtra("listNo", listNo);
+		startActivity(intent);
+	}
 	/**************************
 	 * SharedPreferences 이용 로그인 시 사용했던 아이디를 받아온다.
 	 * 

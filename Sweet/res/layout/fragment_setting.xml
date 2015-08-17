@@ -44,6 +44,7 @@
         />
 
     <Button
+        android:id="@+id/Button_logout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -53,6 +54,7 @@
         android:background="@drawable/logout_button" />
     
     <Button
+        android:id="@+id/Button_signout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="center"
