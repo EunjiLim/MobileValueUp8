@@ -1,14 +1,24 @@
 package com.example.fragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.libriary.JSONParser;
+import com.example.listview.IconTextItem;
 import com.example.sweet.R;
 import com.example.sweet.SetGroupActivity;
 import com.example.sweet.SetLocationActivity;
@@ -31,7 +41,7 @@ public class FragmentHome extends Fragment{
 	double startingLat;
 	double startingLon;
 	private Button mapLocationBtn;
-	
+	JSONArray boardArray;
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,7 +93,58 @@ public class FragmentHome extends Fragment{
         //putMarker(double lat, double lon, String title, String text);
     }
 
+	private class JSONParse extends AsyncTask<String, String, JSONObject> {
+		private ProgressDialog pDialog;
 
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(getActivity());
+			pDialog.setMessage("Getting Data ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+
+		}
+
+		@Override
+		protected JSONObject doInBackground(String... args) {
+
+			JSONParser jParser = new JSONParser();
+
+			// Getting JSON from URL
+			JSONObject json = jParser.getJSONFromUrl("http://52.69.67.4/longlang.php");
+			return json;
+		}
+
+		@Override
+		protected void onPostExecute(JSONObject json) {
+			pDialog.dismiss();
+			try {
+				Log.i("TAG", "onPostExecuteΩ√¿€");
+
+				// Getting JSON Array from URL
+				boardArray = json.getJSONArray("board");
+
+				for (int i = 0; i < boardArray.length(); i++) {
+					JSONObject c = boardArray.getJSONObject(i);
+
+					// Storing JSON item in a Variable
+					String lati = c.getString("lang");
+					String longi = c.getString("lang2");
+					String title = c.getString("title");
+					String contents = c.getString("contents");
+					double lati2 = Double.valueOf(lati).doubleValue();
+					double longi2 = Double.valueOf(longi).doubleValue();
+					putMarker(lati2, longi2, title, contents);
+					Log.i("TAG", "(");
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
