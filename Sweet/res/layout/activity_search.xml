@@ -18,8 +18,7 @@
         android:id="@+id/EditText_boardSearch"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/Spinner_boardSearch"
-        android:layout_alignBottom="@id/Spinner_boardSearch" />
+        android:layout_toRightOf="@id/Spinner_boardSearch" />
     <Button
         android:id="@+id/Button_boardSearch"
         android:layout_width="60dp"

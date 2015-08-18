@@ -57,6 +57,9 @@ public class FragmentHome extends Fragment{
         // TODO Auto-generated method stub
         super.onViewCreated(view, savedInstanceState);
         
+        JSONParse json = new JSONParse();
+        json.execute();
+        
         //맵 초기화, 처음 화면 위치 설정
         map =  ((SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map)).getMap();
         startingLat= 36.1138582;
@@ -137,7 +140,7 @@ public class FragmentHome extends Fragment{
 					double lati2 = Double.valueOf(lati).doubleValue();
 					double longi2 = Double.valueOf(longi).doubleValue();
 					putMarker(lati2, longi2, title, contents);
-					Log.i("TAG", "(");
+					Log.d("Home", "lati2, longi2, title, contents");
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -189,8 +192,10 @@ public class FragmentHome extends Fragment{
 	public void putMarker(double lat, double lon, String title, String text){
 		LatLng chuncheon = new LatLng(37.875101, 127.735783);
         
-        map.addMarker(new MarkerOptions().position(chuncheon).title("자전거 여행").
-        		snippet("춘천 자전거 여행하실 분~").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)));
+		
+        map.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title).
+        		snippet(text).icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)));
+        Log.d("Home", "마커");
 	}
 	
 }
