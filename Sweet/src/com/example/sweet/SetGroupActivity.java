@@ -90,7 +90,7 @@ public class SetGroupActivity extends ActionBarActivity {
 		context = this;
 
 		//액션바 타이틀 설정
-		getSupportActionBar().setTitle("스윗 만들기");
+		getSupportActionBar().setTitle("Sweet 만들기");
 
 		// 제목, 내용, 정원
 		title = (EditText) findViewById(R.id.EditText_title);

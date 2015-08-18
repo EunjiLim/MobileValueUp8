@@ -12,7 +12,8 @@
         android:id="@+id/Spinner_boardSearch"
         android:layout_width="65dp"
         android:layout_height="wrap_content" 
-        android:background="#64C6C2"/>
+        android:background="#64C6C2"
+        android:popupBackground="#64C6C2"/>
     
     <EditText
         android:id="@+id/EditText_boardSearch"
