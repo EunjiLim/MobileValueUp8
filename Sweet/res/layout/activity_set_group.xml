@@ -200,15 +200,15 @@
 
 	    <EditText
 	        android:id="@+id/EditText_selectedDate"
-	        android:layout_width="match_parent"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
 	        android:layout_centerVertical="true"
+	        android:layout_centerHorizontal="true"
 	        android:layout_toRightOf="@id/TextView_setGroupDate"
 	        android:layout_toEndOf="@id/TextView_setGroupDate"
 	        android:background="@null"
 	        android:layout_margin="2dp"
-	        android:ems="10" />
+	        android:ems="10"/>
 	    
 	    <Button
 	        android:layout_width="30dp"
@@ -249,6 +249,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:inputType="number"
              />
         
         <ImageView
@@ -271,7 +272,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:onClick="onClickedSetGroup"
-        android:text="모임만들기"
+        android:text="Sweet 만들기"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
