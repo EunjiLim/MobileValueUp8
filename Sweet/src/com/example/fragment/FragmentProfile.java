@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -24,6 +25,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ import com.example.commentlistview.CommentItem;
 import com.example.libriary.JSONParser;
 import com.example.listview.IconTextItem;
 import com.example.listview.IconTextListAdapter;
+import com.example.sweet.GroupSelectedActivity;
 import com.example.sweet.R;
 
 public class FragmentProfile extends Fragment {
@@ -108,6 +111,30 @@ public class FragmentProfile extends Fragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
+		// 리스트 뷰 항목 클릭했을 때
+		groupMade.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+
+				// 클릭된 리스트 정보를 새로운 IconTextItem에 저장
+				IconTextItem item = (IconTextItem) madeAdapter.getItem(position);
+				String[] data = item.getData();
+				/*******************************
+				 * 게시판 번호가 IconTextItem의 item에서 6번째로 저장되어 있음을 toast로 확인할 수 있다.
+				 */
+				// Toast.makeText(getActivity(), data[5],
+				// Toast.LENGTH_SHORT).show();
+
+				Intent intent = new Intent(getActivity(), GroupSelectedActivity.class);
+				
+				//인텐트에 list No. 정보를 넣어서 전달한다.
+				intent.putExtra("listNo", data[5]);
+				startActivity(intent);
+
+			}
+		});
 	}
 
 	private class profile extends AsyncTask<String, String, JSONObject> {

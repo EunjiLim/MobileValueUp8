@@ -2,7 +2,6 @@ package com.example.joinerlist;
 
 import android.graphics.drawable.Drawable;
 
-import com.example.listview.IconTextItem;
 
 public class JoinerInfoItem {
 	// Drawable 타입의 변수
@@ -38,16 +37,15 @@ public class JoinerInfoItem {
 	 * @param obj06
 	 */
 	public JoinerInfoItem(Drawable icon, String obj01, String obj02,
-			String obj03, String obj04, String obj05, String obj06) {
+			String obj03, String obj04, String obj05) {
 		mIcon = icon;
 
-		mData = new String[6];
+		mData = new String[5];
 		mData[0] = obj01;
 		mData[1] = obj02;
 		mData[2] = obj03;
 		mData[3] = obj04;
 		mData[4] = obj05;
-		mData[5] = obj06;
 	}
 	
 	/**
@@ -117,7 +115,7 @@ public class JoinerInfoItem {
 	 * @param other
 	 * @return
 	 */
-	public int compareTo(IconTextItem other) {
+	public int compareTo(JoinerInfoItem other) {
 		if (mData != null) {
 			String[] otherData = other.getData();
 			if (mData.length == otherData.length) {

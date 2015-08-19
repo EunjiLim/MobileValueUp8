@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ import com.example.sweet.LoginActivity.logIn;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -112,7 +114,20 @@ public class SearchActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(context, "You Clicked", 0).show();
+				// 클릭된 리스트 정보를 새로운 IconTextItem에 저장
+				IconTextItem item = (IconTextItem) adapter.getItem(position);
+				String[] data = item.getData();
+				/*******************************
+				 * 게시판 번호가 IconTextItem의 item에서 6번째로 저장되어 있음을 toast로 확인할 수 있다.
+				 */
+				// Toast.makeText(getActivity(), data[5],
+				// Toast.LENGTH_SHORT).show();
+
+				Intent intent = new Intent(context, GroupSelectedActivity.class);
+				
+				//인텐트에 list No. 정보를 넣어서 전달한다.
+				intent.putExtra("listNo", data[5]);
+				startActivity(intent);
 
 			}
 		});

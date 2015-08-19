@@ -41,15 +41,17 @@ public class FragmentSetting  extends Fragment{
         
         logout.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
-				startActivity(intent);
+				getActivity().finish();
+				/*Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+				startActivity(intent);*/
 			}
 		});
         
         signout.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
-				startActivity(intent);
+				getActivity().finish();
+			/*	Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+				startActivity(intent);*/
 			}
 		});
         

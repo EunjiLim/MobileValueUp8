@@ -17,33 +17,33 @@ public class JoinerInfoView extends LinearLayout{
 	private ImageView mIcon;
 
 	/**
-	 * TextView title
+	 * TextView ID
 	 */
-	private TextView mText_title;
+	private TextView mText_ID;
 
 	/**
-	 * TextView number of member
+	 * TextView sex
 	 */
-	private TextView mText_numberOfMember;
+	private TextView mText_Sex;
 
 	/**
-	 * TextView region
+	 * TextView name
 	 */
-	private TextView mText_region;
+	private TextView mText_name;
 	/**
-	 * TextView date
+	 * TextView birthday
 	 */
-	private TextView mText_date;
+	private TextView mText_birthday;
 	/**
-	 * TextView fixed number
+	 * TextView phone
 	 */
-	private TextView mText_fixedNumber;
+	private TextView mText_phone;
 	/**
 	 * TextView list No.
 	 */
 	private TextView mText_listNo;
 	
-	public JoinerInfoView(Context mContext, IconTextItem aItem) {
+	public JoinerInfoView(Context mContext, JoinerInfoItem aItem) {
 		super(mContext);
 
 		// Layout Inflation
@@ -51,12 +51,24 @@ public class JoinerInfoView extends LinearLayout{
 		inflater.inflate(R.layout.joinerinfolist, this, true);
 
 		// Set Icon
-		mIcon = (ImageView) findViewById(R.id.ImageView_profile);
+		mIcon = (ImageView) findViewById(R.id.ImageView_joiner);
 		mIcon.setImageDrawable(aItem.getIcon());
 
 		// Set Text title
-		mText_title = (TextView) findViewById(R.id.TextView_listTitle);
-		mText_title.setText(aItem.getData(0));
+		mText_ID = (TextView) findViewById(R.id.TextView_joinerID);
+		mText_ID.setText(aItem.getData(0));
+		
+		mText_Sex = (TextView) findViewById(R.id.TextView_joinerSex);
+		mText_Sex.setText(aItem.getData(1));
+		
+		mText_name = (TextView) findViewById(R.id.TextView_joinerName);
+		mText_name.setText(aItem.getData(2));
+		
+		mText_birthday = (TextView) findViewById(R.id.TextView_joinerBirthday);
+		mText_birthday.setText(aItem.getData(3));
+		
+		mText_phone = (TextView) findViewById(R.id.TextView_joinerPhone);
+		mText_phone.setText(aItem.getData(4));
 
 	}
 	
@@ -68,17 +80,15 @@ public class JoinerInfoView extends LinearLayout{
 	 */
 	public void setText(int index, String data) {
 		if (index == 0) {
-			mText_title.setText(data);
+			mText_ID.setText(data);
 		} else if (index == 1) {
-			mText_numberOfMember.setText(data);
+			mText_Sex.setText(data);
 		} else if (index == 2) {
-			mText_region.setText(data);
+			mText_name.setText(data);
 		} else if (index == 3) {
-			mText_date.setText(data);
+			mText_birthday.setText(data);
 		} else if (index == 4) {
-			mText_fixedNumber.setText(data);
-		} else if (index == 5) {
-			mText_listNo.setText(data);
+			mText_phone.setText(data);
 		}else{
 			throw new IllegalArgumentException();
 		}

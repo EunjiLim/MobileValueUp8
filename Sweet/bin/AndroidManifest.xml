@@ -90,7 +90,8 @@
         </activity>
         <activity
             android:name=".JoinerInfoActivity"
-            android:label="@string/joiner_info" >
+            android:label="@string/joiner_info"
+            android:theme="@style/CustomActionBarTheme3" >
         </activity>
     </application>
 

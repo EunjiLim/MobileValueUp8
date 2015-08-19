@@ -14,7 +14,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.commentlistview.CommentItem;
+import com.example.joinerlist.JoinerInfoItem;
+import com.example.joinerlist.JoinerInfoListAdapter;
 import com.example.libriary.JSONParser;
+import com.example.listview.IconTextItem;
+import com.example.listview.IconTextListAdapter;
 
 import android.app.ProgressDialog;
 import android.content.res.Resources;
@@ -22,7 +26,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class JoinerInfoActivity extends ActionBarActivity{
 	
@@ -32,22 +38,27 @@ public class JoinerInfoActivity extends ActionBarActivity{
 	//TAG
 	private static final String TAG_ID = "ID";
 	private static final String TAG_SEX = "SEX";
+	private static final String TAG_NAME = "NAME";
 	private static final String TAG_BIRTHDAY = "BIRTHDAY";
 	private static final String TAG_PHONE = "PHONE";
-	private static final String TAG_KAKAOID = "FACEBOOK";
 	
 	ListView listview;
+	JoinerInfoListAdapter adapter;
+	
 	String listNo, myResult;
 	JSONArray boardArray;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join_info);
-		
+	
+		Log.i("joiner","2");
 		listview = (ListView) findViewById(R.id.listView_joinInfo);
-		
+		adapter = new JoinerInfoListAdapter(this);
 		// intent로 전달된 게시판 번호
 		listNo = getIntent().getExtras().getString("listNo");
+		
+		new joiner().execute();
 	}
 	
 	/****************************************************
@@ -62,11 +73,13 @@ public class JoinerInfoActivity extends ActionBarActivity{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			Log.i("joiner","3");
 		}
 
 		@Override
 		protected JSONObject doInBackground(String... args) {
 			try {
+				Log.i("joiner","4");
 				JSONParser jParser = new JSONParser();
 				URL myUrl = new URL("http://52.69.67.4/list.php");
 				HttpURLConnection http = (HttpURLConnection) myUrl
@@ -116,7 +129,7 @@ public class JoinerInfoActivity extends ActionBarActivity{
 
 				// 서버에서 받은 string에서 jsonObject를 분리해 내는 함수 호출
 				JSONObject json = jParser.getJSONObject(myResult);
-				Log.i("selected", json.toString());
+				Log.i("joiner","5" + json.toString());
 				return json;
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
@@ -134,9 +147,12 @@ public class JoinerInfoActivity extends ActionBarActivity{
 				/***************************
 				 * 모임 만든 사람 정보 받아오기
 				 **************************/
-				String id, phone, kakaoid, birthday, sex;
+				
+				Log.i("joiner","6");
+				String id, name, phone, kakaoid, birthday, sex;
 				boardArray = json.getJSONArray(TAG_OS);
-
+				Resources res = getResources();
+				
 				// ID, PHONE, KAKAOID, BIRTHDAY, NAME, SEX
 				for (int i = 0; i < boardArray.length(); i++) {
 					JSONObject c = boardArray.getJSONObject(i);
@@ -144,15 +160,14 @@ public class JoinerInfoActivity extends ActionBarActivity{
 					// Storing JSON item in a Variable
 					id = c.getString(TAG_ID);
 					sex = c.getString(TAG_SEX);
+					name = c.getString(TAG_NAME);
 					phone = c.getString(TAG_PHONE);
-					kakaoid = c.getString(TAG_KAKAOID);
 					birthday = c.getString(TAG_BIRTHDAY);
-
-/*					mID.setText(id);
-					mPhone.setText(phone);
-					mKakaoID.setText(kakaoid);
-					mBirthday.setText(birthday);
-					mSex.setText(sex);*/
+					Log.i("joiner","7");
+					adapter.addItem(new JoinerInfoItem(res
+							.getDrawable(R.drawable.profile_icon), id, sex,
+							name, birthday, phone));
+					listview.setAdapter((ListAdapter) adapter);
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();

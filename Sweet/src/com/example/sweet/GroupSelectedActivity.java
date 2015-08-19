@@ -545,7 +545,7 @@ public class GroupSelectedActivity extends ActionBarActivity {
 	 * @param v
 	 ******************************/
 	public void joinInfo(View v) {
-		Intent intent = new Intent(context, JoinerInfoActivity.class);
+		Intent intent = new Intent(getApplicationContext(), JoinerInfoActivity.class);
 		
 		//인텐트에 list No. 정보를 넣어서 전달한다.
 		intent.putExtra("listNo", listNo);
