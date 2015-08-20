@@ -97,9 +97,11 @@ public class FragmentProfile extends Fragment {
 		// 가입한 모임
 		groupJoined = (ListView) v.findViewById(R.id.ListView_groupJoined);
 		joinedAdapter = new IconTextListAdapter(getActivity());
-		/*joinedAdapter.addItem(new IconTextItem(getResources().getDrawable(
-				R.drawable.eat_coloricon), "1", "1", "2", "1", "1", "1"));
-		groupJoined.setAdapter(joinedAdapter);*/
+		joinedAdapter.addItem(new IconTextItem(getResources().getDrawable(
+				R.drawable.eat_coloricon), "수요 미식회 삼계탕 같이 드실분!", "2", "서울", "2015-08-23", "5", "6"));
+		joinedAdapter.addItem(new IconTextItem(getResources().getDrawable(
+				R.drawable.leisure_coloricon), "속초 레프팅", "2", "서울", "2015-08-27", "4", "6"));
+		groupJoined.setAdapter(joinedAdapter);
 
 		myProfile = new profile();
 		myProfile.execute();

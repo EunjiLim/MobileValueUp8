@@ -54,6 +54,7 @@ public class LoginActivity extends ActionBarActivity {
 		//액션바
 		mActionBar = getSupportActionBar();
 		mActionBar.setTitle("로그인");
+		mActionBar.setElevation(0);
 		
 		ID = (EditText) findViewById(R.id.emailAddress);
 		PW = (EditText) findViewById(R.id.pw);

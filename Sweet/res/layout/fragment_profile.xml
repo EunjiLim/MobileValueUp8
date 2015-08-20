@@ -187,7 +187,7 @@
     <ListView
         android:id="@+id/ListView_groupMade"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="125dp" />
 
     <View
         android:layout_width="match_parent"
@@ -223,6 +223,6 @@
     <ListView
         android:id="@+id/ListView_groupJoined"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="125dp" />
 
 </LinearLayout>
